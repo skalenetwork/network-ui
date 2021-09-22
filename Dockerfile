@@ -5,9 +5,6 @@ COPY package.json yarn.lock ./
 RUN yarn
 COPY . ./
 
-ENV REACT_APP_BASE_PROXY_URL=$REACT_APP_BASE_PROXY_URL
-ENV REACT_APP_CHAIN_ID=$REACT_APP_CHAIN_ID
-
 RUN yarn build
 
 RUN yarn global add serve
