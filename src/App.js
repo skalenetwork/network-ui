@@ -29,7 +29,7 @@ import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 function App() {
   const [connected, setConnected] = useState(undefined);
@@ -43,7 +43,6 @@ function App() {
               <Schains connected={connected} provider={provider}/>
           </Container>
         </Box>
-        
       </div>
     </div>
   );

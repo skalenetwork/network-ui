@@ -38,6 +38,8 @@ function getFsUrl(schainName) {
 export default function SchainDetails(props) {
   const rpcUrl = getRpcUrl(props.schainName);
   const fsUrl = getFsUrl(props.schainName);
+  const schainHash = props.skale.web3.utils.soliditySha3(props.schainName).substring(0, 15);
+
   return (
     <div className='schain-details'>
       <h3>
@@ -49,6 +51,11 @@ export default function SchainDetails(props) {
         Filestorage Endpoint
       </h3>
       <CopySurface url={fsUrl}/>
+
+      <h3>
+        Chain ID
+      </h3>
+      <CopySurface url={schainHash}/>
     </div>
   );
 }

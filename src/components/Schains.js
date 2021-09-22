@@ -97,7 +97,7 @@ export default class Schains extends React.Component {
   }
 
   render() {
-    const { loading, timeDiff, schains } = this.state;
+    const { loading, timeDiff, schains, skale } = this.state;
 
     if (!this.props.connected || loading) {
       return (
@@ -138,7 +138,7 @@ export default class Schains extends React.Component {
             Select any chain to get endpoints
           </Typography>
         </div>
-        <SchainsAccordion schains={schains}/>
+        <SchainsAccordion schains={schains} skale={skale}/>
       </div>
     )
   }
