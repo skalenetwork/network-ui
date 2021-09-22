@@ -35,6 +35,7 @@ import SchainsAccordion from './SchainsAccordion';
 import smAbi from '../abis/manager.json';
 
 export const CHAIN_ID = process.env["REACT_APP_CHAIN_ID"];
+export const NETWORK_NAME = process.env["REACT_APP_NETWORK_NAME"];
 
 export async function changeMetamaskNetwork() {
   try {
@@ -47,8 +48,6 @@ export async function changeMetamaskNetwork() {
   }
   return 0;
 }
-
-
 
 export default class Schains extends React.Component {
   constructor(props) {
@@ -124,7 +123,14 @@ export default class Schains extends React.Component {
     return (
       <div>
         <div className="marg-top-20 marg-bott-40">
-          <Chip label={updatedText} className="marg-bott-10" size="small" />
+          <div className="flex-container">
+            <div className="flex-container fl-centered">
+              <Chip label={NETWORK_NAME} color="primary" className="marg-bott-10" variant="outlined" size="small" />
+            </div>
+            <div className="flex-container fl-centered marg-left-10">
+              <Chip label={updatedText} className="marg-bott-10" size="small"/>
+            </div>
+          </div>
           <h2 className='card-header'>
             {schains.length} sChains are available
           </h2>

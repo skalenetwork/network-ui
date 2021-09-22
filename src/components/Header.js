@@ -21,19 +21,14 @@
  * @copyright SKALE Labs 2021-Present
 */
 
-import detectEthereumProvider from '@metamask/detect-provider';
-
+import React from 'react';
 import styled from '@emotion/styled'
 
+import detectEthereumProvider from '@metamask/detect-provider';
 
 import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 
-import { Link } from "react-router-dom";
-import React from 'react';
-
-// import { initSkale } from '../networks';
 import MetamaskConnector from './MetamaskConnector';
 import logo from '../skale-logo.svg';
 
@@ -73,16 +68,6 @@ export default class Header extends React.Component {
             <div className='grow'>
                 <img src={logo} className="logo" alt="logo" />
             </div>
-            {/* <MainnetWeb3Connector
-              web3={this.props.mainnetWeb3}
-              setEndpoint={this.props.setEndpoint} 
-              endpoint={this.props.endpoint}
-
-              currentAccount={this.props.currentAccount}
-              setCurrentAccount={this.props.setCurrentAccount}
-
-              edge='right'
-            /> */}
         </Toolbar>
     </SkAppBar>
     )

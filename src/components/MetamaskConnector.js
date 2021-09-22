@@ -21,7 +21,7 @@
  * @copyright SKALE Labs 2021-Present
 */
 
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 
 export default function MainnetWeb3Connector(props) {
   function handleChainChanged(_chainId) {

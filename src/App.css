@@ -93,12 +93,12 @@
 
 
 
-.css-1elwnq4-MuiPaper-root-MuiAccordion-root:first-of-type{
+.MuiAccordion-rounded:first-of-type{
   border-top-left-radius: 20px !important;
   border-top-right-radius:  20px !important;
 }
 
-.css-1elwnq4-MuiPaper-root-MuiAccordion-root:last-of-type{
+.MuiAccordion-rounded:last-of-type{
   border-bottom-left-radius: 20px !important;
   border-bottom-right-radius:  20px !important;
 }

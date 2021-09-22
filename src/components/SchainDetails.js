@@ -21,7 +21,7 @@
  * @copyright SKALE Labs 2021-Present
 */
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import CopySurface from './CopySurface';
 
 export const BASE_PROXY_URL = process.env["REACT_APP_BASE_PROXY_URL"];
@@ -36,8 +36,6 @@ function getFsUrl(schainName) {
 }
 
 export default function SchainDetails(props) {
-  const [copy, setCopied] = useState(undefined);
-
   const rpcUrl = getRpcUrl(props.schainName);
   const fsUrl = getFsUrl(props.schainName);
   return (

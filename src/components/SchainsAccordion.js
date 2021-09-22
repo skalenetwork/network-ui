@@ -28,11 +28,6 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
-import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
-import StreamIcon from '@mui/icons-material/Stream';
-import SelectAllIcon from '@mui/icons-material/SelectAll';
-import PublicIcon from '@mui/icons-material/Public';
-import OutboundIcon from '@mui/icons-material/Outbound';
 import OfflineBoltIcon from '@mui/icons-material/OfflineBolt';
 
 import SchainDetails from './SchainDetails'
