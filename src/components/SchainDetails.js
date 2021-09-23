@@ -23,8 +23,10 @@
 
 import React from 'react';
 import CopySurface from './CopySurface';
+import LinkSurface from './LinkSurface';
 
 export const BASE_PROXY_URL = process.env["REACT_APP_BASE_PROXY_URL"];
+export const EXPLORER_URL = process.env["REACT_APP_EXPLORER_URL"];
 
 
 function getRpcUrl(schainName) {
@@ -35,9 +37,14 @@ function getFsUrl(schainName) {
   return BASE_PROXY_URL + '/fs/' + schainName;
 }
 
+function getExplorerUrl(schainName) {
+  return 'http://' + schainName + '.' + EXPLORER_URL;
+}
+
 export default function SchainDetails(props) {
   const rpcUrl = getRpcUrl(props.schainName);
   const fsUrl = getFsUrl(props.schainName);
+  const explorerUrl = getExplorerUrl(props.schainName);
   const schainHash = props.skale.web3.utils.soliditySha3(props.schainName).substring(0, 15);
 
   return (
@@ -51,11 +58,21 @@ export default function SchainDetails(props) {
         Filestorage Endpoint
       </h3>
       <CopySurface url={fsUrl}/>
-
+      
       <h3>
         Chain ID
       </h3>
       <CopySurface url={schainHash}/>
+
+      {EXPLORER_URL ? (
+          <div>
+            <h3>
+              Block explorer
+            </h3>
+            <LinkSurface url={explorerUrl}/>
+          </div>
+      ) : null}
+
     </div>
   );
 }

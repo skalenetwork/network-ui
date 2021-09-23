@@ -168,12 +168,14 @@
 }
 
 .copyBoard{
-  margin: 10px 0;
-  padding: 25pt;
+  margin: 10px 0 !important;
+  padding: 25pt !important;
   background-color: #f1f1f1 !important;
   border-radius: 20px !important;
   border: none !important;
-  cursor: pointer;
+  cursor: pointer !important;
+  width: 100%;
+  font-size: 12pt !important;
 }
 
 .schain-details{
@@ -182,4 +184,26 @@
 
 .copy-icon {
   color: rgba(0, 0, 0, 0.4);
+}
+
+.undec{
+  text-decoration: none !important;
+}
+
+.copyBoard:hover{
+  background-color: #e8e8e8 !important;
+}
+
+
+.linkSurface{
+  background-color: #d2ecf7 !important;
+  color: #296a98 !important;
+}
+
+.linkSurfaceIcon{
+  color: #5298ca !important;
+}
+
+.linkSurface:hover{
+  background-color: #cbebf9 !important
 }

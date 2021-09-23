@@ -25,9 +25,9 @@ import React, { useState } from 'react';
 
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 
-import Paper from '@mui/material/Paper';
 import Tooltip from '@mui/material/Tooltip';
 import Snackbar from '@mui/material/Snackbar';
+import ButtonBase from '@mui/material/ButtonBase';
 
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
@@ -67,8 +67,8 @@ export default function CopySurface(props) {
         <CopyToClipboard text={props.url}
             onCopy={handleClick}>
             <Tooltip title="Click to copy to clipboard">
-                <Paper variant="outlined" className='copyBoard'>
-                <div className="flex-container">
+              <ButtonBase className='copyBoard flex-container'>
+            
                     <div className="flex-container fl-centered-vert fl-grow">
                     <code>
                         {props.url}
@@ -77,8 +77,8 @@ export default function CopySurface(props) {
                     <div className="flex-container">
                     <ContentCopyIcon className='copy-icon'/>
                     </div>
-                </div>
-                </Paper>
+                
+                </ButtonBase>
             </Tooltip>
         </CopyToClipboard>
         <Snackbar
