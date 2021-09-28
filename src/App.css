@@ -91,7 +91,18 @@
   margin-bottom: 40px !important;
 }
 
+.no-marg-top{
+  margin-top: 0 !important;
+}
 
+
+.no-marg-bott{
+  margin-bottom: 0 !important;
+}
+
+.no-marg{
+  margin: 0 !important;
+}
 
 .MuiAccordion-rounded:first-of-type{
   border-top-left-radius: 20px !important;
@@ -169,7 +180,7 @@
 
 .copyBoard{
   margin: 10px 0 !important;
-  padding: 25pt !important;
+  padding: 20pt !important;
   background-color: #f1f1f1 !important;
   border-radius: 20px !important;
   border: none !important;
@@ -179,7 +190,7 @@
 }
 
 .schain-details{
-  margin: 0 10px;
+  margin: -10px 10px 0 10px;
 }
 
 .copy-icon {
@@ -198,6 +209,8 @@
 .linkSurface{
   background-color: #d2ecf7 !important;
   color: #296a98 !important;
+  width: inherit !important;
+  box-shadow: none !important;
 }
 
 .linkSurfaceIcon{
@@ -206,4 +219,38 @@
 
 .linkSurface:hover{
   background-color: #cbebf9 !important
+}
+
+.MuiFormControlLabel-root .MuiTypography-root{
+  font-weight: 500;
+  font-size: 0.7rem;
+  color: rgba(0, 0, 0, 0.6) !important;
+}
+
+.MetamaskSurface {
+  background-color: rgb(255 218 184) !important;
+  color: #cb6300 !important;
+  box-shadow: none !important;
+  width: inherit !important;
+}
+
+.MetamaskSurface:hover {
+  background-color: rgb(255 218 184) !important;
+}
+
+.MetamaskSurfaceIcon{
+  color: #e38e3e !important
+}
+
+.metamaskLogo{
+  width: 150px;
+  margin: 0 100px;
+}
+
+.MuiButton-contained{
+  border-radius: 20px !important;
+}
+
+.btnIcon{
+  width: 23px !important;
 }

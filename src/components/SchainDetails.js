@@ -24,55 +24,97 @@
 import React from 'react';
 import CopySurface from './CopySurface';
 import LinkSurface from './LinkSurface';
+import SecureSwitch from './SecureSwitch';
+import MetamaskSurface from './MetamaskSurface';
+
+import { rmPad0x } from '../helper'
 
 export const BASE_PROXY_URL = process.env["REACT_APP_BASE_PROXY_URL"];
 export const EXPLORER_URL = process.env["REACT_APP_EXPLORER_URL"];
 
+const HTTP_PREFIX = 'http://';
+const HTTPS_PREFIX = 'https://';
+const WS_PREFIX = 'ws://';
+const WSS_PREFIX = 'wss://';
 
-function getRpcUrl(schainName) {
-  return BASE_PROXY_URL + '/v1/' + schainName;
+function getRpcUrl(schainName, prefix) {
+  return prefix + BASE_PROXY_URL + '/v1/' + schainName;
 }
 
-function getFsUrl(schainName) {
-  return BASE_PROXY_URL + '/fs/' + schainName;
+function getRpcWsUrl(schainName, prefix) {
+  return prefix + BASE_PROXY_URL + '/v1/ws/' + schainName;
+}
+
+function getFsUrl(schainName, prefix) {
+  return prefix + BASE_PROXY_URL + '/fs/' + schainName;
 }
 
 function getExplorerUrl(schainName) {
-  return 'http://' + schainName + '.' + EXPLORER_URL;
+  return HTTP_PREFIX + schainName + '.' + EXPLORER_URL;
+}
+
+function getSchainHash(web3, schainName) {
+  let hash = web3.utils.soliditySha3(schainName).substring(0, 15);
+  return rmPad0x(hash);
 }
 
 export default function SchainDetails(props) {
-  const rpcUrl = getRpcUrl(props.schainName);
-  const fsUrl = getFsUrl(props.schainName);
-  const explorerUrl = getExplorerUrl(props.schainName);
-  const schainHash = props.skale.web3.utils.soliditySha3(props.schainName).substring(0, 15);
+  const rpcUrl = getRpcUrl(props.schainName, HTTPS_PREFIX);
+  const rpcHttpUrl = getRpcUrl(props.schainName, HTTP_PREFIX);
 
+  const rpcWssUrl = getRpcWsUrl(props.schainName, WSS_PREFIX);
+  const rpcWsUrl = getRpcWsUrl(props.schainName, WS_PREFIX);
+
+  const fsUrl = getFsUrl(props.schainName, HTTPS_PREFIX);
+  const fsHttpUrl = getFsUrl(props.schainName, HTTP_PREFIX);
+
+  const explorerUrl = getExplorerUrl(props.schainName);
+  const schainHash = getSchainHash(props.skale.web3, props.schainName);
+
+  const [checked, setChecked] = React.useState(true);
+  // 0x0f00fdf3fc09f
   return (
     <div className='schain-details'>
-      <h3>
-        RPC Endpoint
-      </h3>
-      <CopySurface url={rpcUrl}/>
-      
-      <h3>
+      <div className="flex-container fl-centered-vert">
+        <div className="flex-container fl-grow fl-centered-vert">
+          <h3 className='no-marg'>
+            RPC Endpoints
+          </h3>
+        </div>
+        <div className="flex-container fl-centered-vert">
+          <SecureSwitch checked={checked} setChecked={setChecked}/>
+        </div>
+      </div>
+      <CopySurface url={checked ? rpcUrl : rpcHttpUrl}/>
+      <CopySurface url={checked ? rpcWssUrl : rpcWsUrl}/>
+
+      <h3 className='no-marg-bott'>
         Filestorage Endpoint
       </h3>
-      <CopySurface url={fsUrl}/>
+      <CopySurface url={checked ? fsUrl : fsHttpUrl}/>
       
-      <h3>
+      <h3 className='no-marg-bott'>
         Chain ID
       </h3>
       <CopySurface url={schainHash}/>
 
-      {EXPLORER_URL ? (
-          <div>
-            <h3>
-              Block explorer
-            </h3>
-            <LinkSurface url={explorerUrl}/>
-          </div>
-      ) : null}
-
+      <div className='marg-top-30 marg-bott-20 flex-container'>
+        <div className='flex-container marg-ri-20'>
+          <MetamaskSurface 
+            url={rpcUrl}
+            chainId={schainHash}
+            chainName={props.schainName}
+            explorerUrl={explorerUrl}
+          />
+        </div>
+        <div className='flex-container'>
+          {EXPLORER_URL ? (
+            <div>
+              <LinkSurface url={explorerUrl} text='Go to block explorer'/>
+            </div>
+          ) : null}
+        </div>
+      </div>
     </div>
   );
 }

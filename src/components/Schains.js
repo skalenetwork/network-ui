@@ -30,9 +30,14 @@ import Typography from '@mui/material/Typography';
 import Chip from '@mui/material/Chip';
 import CircularProgress from '@mui/material/CircularProgress';
 
+import Button from '@mui/material/Button';
+import LanguageIcon from '@mui/icons-material/Language';
+
 import SchainsAccordion from './SchainsAccordion';
 
 import smAbi from '../abis/manager.json';
+
+import metamaskLogo from '../metamask-fox.svg';
 
 export const CHAIN_ID = process.env["REACT_APP_CHAIN_ID"];
 export const NETWORK_NAME = process.env["REACT_APP_NETWORK_NAME"];
@@ -58,9 +63,11 @@ export default class Schains extends React.Component {
     };
     this.loadSchains=this.loadSchains.bind(this);
     this.updateTime=this.updateTime.bind(this);
+    this.wrongNetwork=this.wrongNetwork.bind(this);
   }
 
   componentDidMount() {
+    this.loadSchains();
     var intervalId = setInterval(this.loadSchains, 10000);
     var updateTimeIntervalId = setInterval(this.updateTime, 1000);
     this.setState({
@@ -79,14 +86,28 @@ export default class Schains extends React.Component {
       timeDiff: Math.floor((new Date().getTime() - this.state.updatedAt) / 1000)
     });
   }
+
+  wrongNetwork() {
+    return window.ethereum.chainId !== CHAIN_ID;
+  }
  
   async loadSchains() {
     if (!this.props.provider) return;
+
+    console.log(this.wrongNetwork());
+    console.log(window.ethereum.chainId);
+    console.log(this.state.wrongNetwork);
+    if (this.wrongNetwork()) {
+      this.setState({wrongNetwork: true})
+      return;
+    }
+
     if (!this.state.skale) {
       this.setState({skale: new Skale(new Web3(this.props.provider), smAbi)});
     }
-    
-    await changeMetamaskNetwork();
+
+    // await this.switchNetwork();
+    // await changeMetamaskNetwork();
 
     let chains = await this.state.skale.contracts.schainsInternal.getSchainsNames();
     this.setState({
@@ -97,7 +118,30 @@ export default class Schains extends React.Component {
   }
 
   render() {
-    const { loading, timeDiff, schains, skale } = this.state;
+    const { loading, timeDiff, schains, skale, wrongNetwork } = this.state;
+
+    if (wrongNetwork) {
+      return (
+        <div className="fullscreen-msg">
+          <div className="fl-container ">
+            <div className='fl-container fl-centered'>
+              <img src={metamaskLogo} alt="logo" className='marg-bott-40 metamaskLogo'/>
+            </div>
+            <div className='fl-container fl-centered'>
+              <Button
+                variant="contained"
+                startIcon={<LanguageIcon/>}
+                size="large"
+                className='MetamaskSurface'
+                onClick={changeMetamaskNetwork}
+              >
+                Switch network to load sChains
+              </Button>
+            </div>
+          </div>
+        </div>
+      );
+    };
 
     if (!this.props.connected || loading) {
       return (

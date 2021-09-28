@@ -17,33 +17,24 @@
  */
 
 /**
- * @file LinkSurface.js
+ * @file helper.js
  * @copyright SKALE Labs 2021-Present
 */
 
-import React from 'react';
+export function rmPad0x(s) {
+    let fx = remove0x(s);
+    fx = fx.replace(/^0+/, '');
+    return add0x(fx);
+}
 
-import Tooltip from '@mui/material/Tooltip';
-import Button from '@mui/material/Button';
+export function add0x(s) {
+    if (!s.startsWith('0x')) {
+        return '0x' + s
+    }
+    return s;
+}
 
-import LanguageIcon from '@mui/icons-material/Language';
-
-
-export default function LinkSurface(props) {
-  return (
-    <div>
-        <a target="_blank" rel="noreferrer" href={props.url} className='undec'>
-            <Tooltip title="Click to follow the link">
-              <Button
-                  variant="contained"
-                  startIcon={<LanguageIcon/>}
-                  size="large"
-                  className='linkSurface'
-                >
-                {props.text}
-              </Button>
-            </Tooltip>
-        </a>
-    </div>
-  );
+export function remove0x(s) {
+    if (!s.startsWith('0x')) return s;
+    return s.slice(2);
 }

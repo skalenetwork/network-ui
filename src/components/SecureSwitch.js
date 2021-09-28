@@ -17,33 +17,27 @@
  */
 
 /**
- * @file LinkSurface.js
+ * @file SecureSwitch.js
  * @copyright SKALE Labs 2021-Present
 */
 
-import React from 'react';
+import * as React from 'react';
+import Switch from '@mui/material/Switch';
+import FormControlLabel from '@mui/material/FormControlLabel';
 
-import Tooltip from '@mui/material/Tooltip';
-import Button from '@mui/material/Button';
+export default function SecureSwitch(props) {
+  const handleChange = (event) => {
+    props.setChecked(event.target.checked);
+  };
 
-import LanguageIcon from '@mui/icons-material/Language';
-
-
-export default function LinkSurface(props) {
   return (
-    <div>
-        <a target="_blank" rel="noreferrer" href={props.url} className='undec'>
-            <Tooltip title="Click to follow the link">
-              <Button
-                  variant="contained"
-                  startIcon={<LanguageIcon/>}
-                  size="large"
-                  className='linkSurface'
-                >
-                {props.text}
-              </Button>
-            </Tooltip>
-        </a>
-    </div>
-  );
+    <FormControlLabel 
+        control={
+        <Switch
+            checked={props.checked} 
+            onChange={handleChange} 
+            inputProps={{ 'aria-label': 'controlled' }}
+        />} 
+        label="HTTPS/WSS" 
+    />)
 }
