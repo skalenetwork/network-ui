@@ -135,7 +135,7 @@ export default class Schains extends React.Component {
                 className='MetamaskSurface'
                 onClick={changeMetamaskNetwork}
               >
-                Switch network to load sChains
+                Switch network to load SKALE Chains
               </Button>
             </div>
           </div>
@@ -153,7 +153,7 @@ export default class Schains extends React.Component {
               </div>  
               <div className="flex-container fl-centered">
                 <h3 className='fullscreen-msg-text'>
-                  {this.props.connected ? 'Loading sChains' : 'Connecting to the network' } 
+                  {this.props.connected ? 'Loading SKALE Chains' : 'Connecting to the network' } 
                 </h3>
               </div>
             </div>
@@ -176,7 +176,7 @@ export default class Schains extends React.Component {
             </div>
           </div>
           <h2 className='card-header'>
-            {schains.length} sChains are available
+            {schains.length} SKALE Chains are available
           </h2>
           <Typography color="textSecondary">
             Select any chain to get endpoints
