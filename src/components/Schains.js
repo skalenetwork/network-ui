@@ -93,10 +93,6 @@ export default class Schains extends React.Component {
  
   async loadSchains() {
     if (!this.props.provider) return;
-
-    console.log(this.wrongNetwork());
-    console.log(window.ethereum.chainId);
-    console.log(this.state.wrongNetwork);
     if (this.wrongNetwork()) {
       this.setState({wrongNetwork: true})
       return;

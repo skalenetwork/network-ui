@@ -199,6 +199,7 @@
 
 .undec{
   text-decoration: none !important;
+  color: inherit !important;
 }
 
 .copyBoard:hover{
@@ -253,4 +254,12 @@
 
 .btnIcon{
   width: 23px !important;
+}
+
+.skLink{
+  color: white !important;
+}
+
+.skBtn{
+  color: rgb(217, 224, 33) !important;
 }

@@ -28,14 +28,22 @@ import detectEthereumProvider from '@metamask/detect-provider';
 
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
+import Button from '@mui/material/Button';
 
 import MetamaskConnector from './MetamaskConnector';
+import NetworksDropdown from './NetworksDropdown';
 import logo from '../skale-logo.svg';
+
+import LinkIcon from '@mui/icons-material/Link';
 
 const SkAppBar = styled(AppBar)({
     'background-color': 'rgb(22, 23, 29)',
     padding: '15px 0',
 });
+
+export const MAIN_WEBSITE_URL = process.env["REACT_APP_MAIN_WEBSITE_URL"];
+export const DOCS_WEBSITE_URL = process.env["REACT_APP_DOCS_WEBSITE_URL"];
+
 
 export default class Header extends React.Component {
   constructor(props) {
@@ -63,10 +71,29 @@ export default class Header extends React.Component {
   render() {
     return (
       <SkAppBar position="fixed" className="sk-header">
-        <Toolbar>
+        <Toolbar className='flex-container'>
             <MetamaskConnector/>
-            <div className='grow'>
+            <div className="flex-container fl-centered-vert fl-grow">
+              <a target="_blank" rel="noreferrer" href={MAIN_WEBSITE_URL} className='undec'>
                 <img src={logo} className="logo" alt="logo" />
+              </a>
+            </div>
+            <div className="flex-container marg-ri-20">
+              <a target="_blank" rel="noreferrer" href={DOCS_WEBSITE_URL} className='undec skdLink'>
+              <Button
+                aria-label="more"
+                aria-controls="long-menu"
+                aria-haspopup="true"
+                color="primary"
+                startIcon={<LinkIcon/>}
+                className='skBtn'
+              > 
+                Docs
+              </Button>
+              </a>
+            </div>
+            <div className="flex-container">
+              <NetworksDropdown/>
             </div>
         </Toolbar>
     </SkAppBar>
