@@ -74,7 +74,7 @@ export default function SchainsAccordion(props) {
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <SchainDetails schainName={schainName} skale={props.skale}/>
+          <SchainDetails schainName={schainName}/>
         </AccordionDetails>
       </Accordion>
       ))}

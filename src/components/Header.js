@@ -52,7 +52,8 @@ export default class Header extends React.Component {
   }
 
   componentDidMount() {
-    var intervalId = setInterval(this.checkWeb3Connection, 2000);
+    this.checkWeb3Connection();
+    var intervalId = setInterval(this.checkWeb3Connection, 5000);
     this.setState({intervalId: intervalId});
   }
  

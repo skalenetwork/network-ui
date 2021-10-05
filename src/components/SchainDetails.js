@@ -21,6 +21,8 @@
  * @copyright SKALE Labs 2021-Present
 */
 
+import Web3 from 'web3';
+
 import React from 'react';
 import CopySurface from './CopySurface';
 import LinkSurface from './LinkSurface';
@@ -53,8 +55,8 @@ function getExplorerUrl(schainName) {
   return HTTP_PREFIX + schainName + '.' + EXPLORER_URL;
 }
 
-function getSchainHash(web3, schainName) {
-  let hash = web3.utils.soliditySha3(schainName).substring(0, 15);
+function getSchainHash(schainName) {
+  let hash = Web3.utils.soliditySha3(schainName).substring(0, 15);
   return rmPad0x(hash);
 }
 
@@ -69,7 +71,7 @@ export default function SchainDetails(props) {
   const fsHttpUrl = getFsUrl(props.schainName, HTTP_PREFIX);
 
   const explorerUrl = getExplorerUrl(props.schainName);
-  const schainHash = getSchainHash(props.skale.web3, props.schainName);
+  const schainHash = getSchainHash(props.schainName);
 
   const [checked, setChecked] = React.useState(true);
   // 0x0f00fdf3fc09f

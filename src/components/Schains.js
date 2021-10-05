@@ -23,8 +23,8 @@
 
 import React from 'react';
 
-import Web3 from 'web3';
-import Skale from '@skalenetwork/skale.js-test';
+// import Web3 from 'web3';
+// import Skale from '@skalenetwork/skale.js-test';
 
 import Typography from '@mui/material/Typography';
 import Chip from '@mui/material/Chip';
@@ -38,6 +38,8 @@ import SchainsAccordion from './SchainsAccordion';
 import smAbi from '../abis/manager.json';
 
 import metamaskLogo from '../metamask-fox.svg';
+
+// import chainsJson from './chains.json'
 
 export const CHAIN_ID = process.env["REACT_APP_CHAIN_ID"];
 export const NETWORK_NAME = process.env["REACT_APP_NETWORK_NAME"];
@@ -62,6 +64,7 @@ export default class Schains extends React.Component {
       updatedAt: new Date().getTime()
     };
     this.loadSchains=this.loadSchains.bind(this);
+    this.loadSchainsFile=this.loadSchainsFile.bind(this);
     this.updateTime=this.updateTime.bind(this);
     this.wrongNetwork=this.wrongNetwork.bind(this);
   }
@@ -90,31 +93,41 @@ export default class Schains extends React.Component {
   wrongNetwork() {
     return window.ethereum.chainId !== CHAIN_ID;
   }
+
+  async loadSchainsFile() {
+    let response = await fetch('static/chains.json');
+    let chainsJson = await response.json();
+    let schainNames = [];
+    for (let chain of chainsJson) {
+      schainNames.push(chain.schain[0]);
+    }
+    return schainNames;
+  }
  
   async loadSchains() {
-    if (!this.props.provider) return;
-    if (this.wrongNetwork()) {
-      this.setState({wrongNetwork: true})
-      return;
-    }
-
-    if (!this.state.skale) {
-      this.setState({skale: new Skale(new Web3(this.props.provider), smAbi)});
-    }
-
+    // if (!this.props.provider) return;
+    // if (this.wrongNetwork()) {
+    //   this.setState({wrongNetwork: true})
+    //   return;
+    // }
+    // if (!this.state.skale) {
+    //   this.setState({skale: new Skale(new Web3(this.props.provider), smAbi)});
+    // }
     // await this.switchNetwork();
     // await changeMetamaskNetwork();
 
-    let chains = await this.state.skale.contracts.schainsInternal.getSchainsNames();
+    // let chains = await this.state.skale.contracts.schainsInternal.getSchainsNames();
+    let schainNames = await this.loadSchainsFile();
     this.setState({
       loading: false,
-      schains: chains,
+      schains: schainNames,
       updatedAt: new Date().getTime()
     });
+    this.updateTime();
   }
 
   render() {
-    const { loading, timeDiff, schains, skale, wrongNetwork } = this.state;
+    const { loading, timeDiff, schains, wrongNetwork } = this.state;
 
     if (wrongNetwork) {
       return (
@@ -149,7 +162,8 @@ export default class Schains extends React.Component {
               </div>  
               <div className="flex-container fl-centered">
                 <h3 className='fullscreen-msg-text'>
-                  {this.props.connected ? 'Loading SKALE Chains' : 'Connecting to the network' } 
+                  Loading SKALE Chains
+                  {/* {this.props.connected ? 'Loading SKALE Chains' : 'Connecting to the network' }  */}
                 </h3>
               </div>
             </div>
@@ -178,7 +192,7 @@ export default class Schains extends React.Component {
             Select any chain to get endpoints
           </Typography>
         </div>
-        <SchainsAccordion schains={schains} skale={skale}/>
+        <SchainsAccordion schains={schains}/>
       </div>
     )
   }
