@@ -52,7 +52,7 @@ function getFsUrl(schainName, prefix) {
 }
 
 function getExplorerUrl(schainName) {
-  return HTTP_PREFIX + schainName + '.' + EXPLORER_URL;
+  return HTTPS_PREFIX + schainName + '.' + EXPLORER_URL;
 }
 
 function getSchainHash(schainName) {
