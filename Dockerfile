@@ -8,4 +8,4 @@ COPY . ./
 RUN yarn build
 
 RUN yarn global add serve
-CMD serve -l 5000 -s build
+CMD serve -l 5001 -s build
