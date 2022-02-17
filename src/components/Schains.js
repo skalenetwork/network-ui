@@ -34,9 +34,6 @@ import Button from '@mui/material/Button';
 import LanguageIcon from '@mui/icons-material/Language';
 
 import SchainsAccordion from './SchainsAccordion';
-
-import smAbi from '../abis/manager.json';
-
 import metamaskLogo from '../metamask-fox.svg';
 
 // import chainsJson from './chains.json'
