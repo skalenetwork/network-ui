@@ -5,7 +5,7 @@ COPY package.json yarn.lock ./
 RUN yarn
 COPY . ./
 
-RUN /usr/src/app/prepare_env_file.sh
+RUN bash /usr/src/app/prepare_env_file.sh
 RUN yarn build
 
 RUN yarn global add serve
