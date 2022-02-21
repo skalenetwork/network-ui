@@ -101,13 +101,13 @@ export default function SchainDetails(props) {
       <CopySurface url={schainHash}/>
 
       <div className='marg-top-30 marg-bott-20 flex-container'>
-        <div className='flex-container marg-ri-20'>
-          <MetamaskSurface 
+        <div className='flex-container'>
+          {props.connected ? (<MetamaskSurface 
             url={rpcUrl}
             chainId={schainHash}
             chainName={props.schainName}
             explorerUrl={explorerUrl}
-          />
+          />) : null}
         </div>
         <div className='flex-container'>
           {EXPLORER_URL ? (

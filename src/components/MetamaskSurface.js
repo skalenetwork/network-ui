@@ -52,7 +52,7 @@ export default function MetamaskSurface(props) {
 
   return (
     <div>
-        <div className='undec' onClick={addNetwork}>
+        <div className='undec marg-ri-20' onClick={addNetwork}>
             <Tooltip title="Click to add Metamask network">
               <Button
                 onClick={addNetwork}

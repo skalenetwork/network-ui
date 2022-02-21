@@ -149,7 +149,7 @@ export default class Schains extends React.Component {
       );
     };
 
-    if (!this.props.connected || loading) {
+    if (loading) {
       return (
         <div className="fullscreen-msg">
           <div>
@@ -189,7 +189,7 @@ export default class Schains extends React.Component {
             Select any chain to get endpoints
           </Typography>
         </div>
-        <SchainsAccordion schains={schains}/>
+        <SchainsAccordion connected={this.props.connected} schains={schains}/>
       </div>
     )
   }

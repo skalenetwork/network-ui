@@ -30,7 +30,6 @@ import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Button from '@mui/material/Button';
 
-import MetamaskConnector from './MetamaskConnector';
 import NetworksDropdown from './NetworksDropdown';
 import logo from '../skale-logo.svg';
 
@@ -62,7 +61,13 @@ export default class Header extends React.Component {
   }
  
  async checkWeb3Connection() {
-    const provider = await detectEthereumProvider();
+    let provider;
+    try {
+      provider = await detectEthereumProvider();
+    } catch {
+      provider = null;
+    }
+    
     if (provider && !this.props.connected) {
       this.props.setConnected(true);
       this.props.setProvider(provider);
@@ -73,7 +78,6 @@ export default class Header extends React.Component {
     return (
       <SkAppBar position="fixed" className="sk-header">
         <Toolbar className='flex-container'>
-            <MetamaskConnector/>
             <div className="flex-container fl-centered-vert fl-grow">
               <a target="_blank" rel="noreferrer" href={MAIN_WEBSITE_URL} className='undec'>
                 <img src={logo} className="logo" alt="logo" />
