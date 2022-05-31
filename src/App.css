@@ -39,19 +39,20 @@
 
 .mainApp {
   padding-top: 94px;
-  height: calc(100vh - 94px);
-  overflow-y: scroll;
+  /* height: calc(100vh - 94px);
+  overflow-y: scroll; */
   margin-bottom: 40px;
 }
 
 .AppWrap{
-  background-color: #f1f1f1;
+  background-color: #141414;
   height: 100vh;
 }
 
 .card-header{
   margin-bottom: 5px;
   margin-top: 0;
+  color: #ffffff;
 }
 
 
@@ -167,6 +168,8 @@
 .schain-name {
   font-weight: bold;
   padding-left: 10pt;
+  text-transform: uppercase;
+  font-size: 0.8rem;
 }
 
 .opacityIcon{
@@ -181,12 +184,12 @@
 .copyBoard{
   margin: 10px 0 !important;
   padding: 20pt !important;
-  background-color: #f1f1f1 !important;
+  background-color: #3a3a3a !important;
   border-radius: 20px !important;
   border: none !important;
   cursor: pointer !important;
   width: 100%;
-  font-size: 12pt !important;
+  font-size: 0.9rem !important;
 }
 
 .schain-details{
@@ -194,7 +197,8 @@
 }
 
 .copy-icon {
-  color: rgba(0, 0, 0, 0.4);
+  color: #ffffff;
+  width: 16pt !important;
 }
 
 .undec{
@@ -203,13 +207,13 @@
 }
 
 .copyBoard:hover{
-  background-color: #e8e8e8 !important;
+  background-color: #424242 !important;
 }
 
 
 .linkSurface{
-  background-color: #d2ecf7 !important;
-  color: #296a98 !important;
+  background-color: #00b3ff75 !important;
+  color: #d8efff !important;
   width: inherit !important;
   box-shadow: none !important;
 }
@@ -219,24 +223,23 @@
 }
 
 .linkSurface:hover{
-  background-color: #cbebf9 !important
+  background-color: #00b3ff94 !important
 }
 
 .MuiFormControlLabel-root .MuiTypography-root{
   font-weight: 500;
   font-size: 0.7rem;
-  color: rgba(0, 0, 0, 0.6) !important;
 }
 
 .MetamaskSurface {
-  background-color: rgb(255 218 184) !important;
-  color: #cb6300 !important;
+  background-color: rgb(255 144 41 / 54%) !important;
+  color: #f6d9bd !important;
   box-shadow: none !important;
   width: inherit !important;
 }
 
 .MetamaskSurface:hover {
-  background-color: rgb(255 218 184) !important;
+  background-color: rgb(255 144 41 / 70%) !important;
 }
 
 .MetamaskSurfaceIcon{
@@ -262,4 +265,30 @@
 
 .skBtn{
   color: rgb(217, 224, 33) !important;
+}
+
+.text-secondary{
+  font-size: 0.8rem !important;
+  color: #aaaaaa;
+  font-weight: 500;
+  margin: 5pt 0;
+}
+
+.MuiFormControlLabel-root span{
+  color: #d4d3d3; 
+}
+
+.sk-header{
+  background-color: rgba(0, 0, 0, 0) !important;
+  -webkit-backdrop-filter: blur(80px) !important;
+  backdrop-filter: blur(80px) !important;
+}
+
+.appContent{
+  height: calc(100vh - 94px);
+  overflow-y: auto;
+}
+
+::-webkit-scrollbar {
+  display: none;
 }

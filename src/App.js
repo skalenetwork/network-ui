@@ -30,21 +30,45 @@ import Container from '@mui/material/Container';
 
 
 import React, { useState } from 'react';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+
+
+let theme = createTheme({
+  palette: {
+    mode: 'dark',
+    background: {
+      paper: '#000000'
+    },
+    primary: {
+      main: '#000000',
+    },
+    secondary: {
+      // main: '#edf2ff',
+      main: '#d9e021',
+    },
+  },
+});
+
 
 function App() {
   const [connected, setConnected] = useState(undefined);
   const [provider, setProvider] = useState(undefined);
   return (
-    <div className="AppWrap">
-      <Header connected={connected} setConnected={setConnected} setProvider={setProvider}/>
-      <div className="mainApp">
-        <Box component="span" m={1} >
-          <Container maxWidth="md">
-              <Schains connected={connected} provider={provider}/>
-          </Container>
-        </Box>
+    <ThemeProvider theme={theme}>
+      <div className="AppWrap">
+        <Header connected={connected} setConnected={setConnected} setProvider={setProvider}/>
+        <div className="mainApp">
+          <div className="appContent">
+          <Box component="span" m={1} >
+            <Container maxWidth="md">
+                <Schains connected={connected} provider={provider}/>
+            </Container>
+          </Box>
+          </div>
+         
+        </div>
       </div>
-    </div>
+    </ThemeProvider>
   );
 }
 

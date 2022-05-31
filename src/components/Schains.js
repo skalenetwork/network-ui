@@ -36,10 +36,22 @@ import LanguageIcon from '@mui/icons-material/Language';
 import SchainsAccordion from './SchainsAccordion';
 import metamaskLogo from '../metamask-fox.svg';
 
-// import chainsJson from './chains.json'
+import chainsJson from './chains.json'
 
 export const CHAIN_ID = process.env["REACT_APP_CHAIN_ID"];
 export const NETWORK_NAME = process.env["REACT_APP_NETWORK_NAME"];
+
+function hashCode(str) {
+  let hash = 0;
+  for (var i = 0; i < str.length; i++) {
+    hash = str.charCodeAt(i) + ((hash << 5) - hash);
+  }
+  return hash;
+}
+
+function stringToColour(str) {
+  return `hsl(${hashCode(str) % 360}, 100%, 80%)`;
+}
 
 export async function changeMetamaskNetwork() {
   try {
@@ -92,8 +104,8 @@ export default class Schains extends React.Component {
   }
 
   async loadSchainsFile() {
-    let response = await fetch('/files/chains.json');
-    let chainsJson = await response.json();
+    // let response = await fetch('/files/chains.json');
+    // let chainsJson = await response.json();
     let schainNames = [];
     for (let chain of chainsJson) {
       schainNames.push(chain.schain[0]);
@@ -176,18 +188,26 @@ export default class Schains extends React.Component {
         <div className="marg-top-20 marg-bott-40">
           <div className="flex-container">
             <div className="flex-container fl-centered">
-              <Chip label={NETWORK_NAME} color="primary" className="marg-bott-10" variant="outlined" size="small" />
+              <Chip
+                sx={{
+                  color: '#000000',
+                  'background-color': stringToColour(NETWORK_NAME)
+                }}
+                label={NETWORK_NAME}
+                className="marg-bott-10"
+                size="small"
+              />
             </div>
             <div className="flex-container fl-centered marg-left-10">
               <Chip label={updatedText} className="marg-bott-10" size="small"/>
             </div>
           </div>
-          <h2 className='card-header'>
-            {schains.length} SKALE Chains are available
-          </h2>
-          <Typography color="textSecondary">
+          <h1 className='card-header'>
+            {schains.length} SKALE Chains
+          </h1>
+          <h5 className="text-secondary">
             Select any chain to get endpoints
-          </Typography>
+          </h5>
         </div>
         <SchainsAccordion connected={this.props.connected} schains={schains}/>
       </div>

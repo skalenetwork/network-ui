@@ -34,14 +34,21 @@ import NetworksDropdown from './NetworksDropdown';
 import logo from '../skale-logo.svg';
 
 import LinkIcon from '@mui/icons-material/Link';
+import MenuBookIcon from '@mui/icons-material/MenuBook';
+import ArticleIcon from '@mui/icons-material/Article';
+import BuildCircleIcon from '@mui/icons-material/BuildCircle';
 
 const SkAppBar = styled(AppBar)({
-    'background-color': 'rgb(22, 23, 29)',
-    padding: '15px 0',
+    // 'background-color': 'rgb(22, 23, 29)',
+    'background-color': '#141414',
+    padding: '15pt 0',
+    'box-shadow': 'none',
+    'background-image': 'none'
 });
 
 export const MAIN_WEBSITE_URL = process.env["REACT_APP_MAIN_WEBSITE_URL"];
 export const DOCS_WEBSITE_URL = process.env["REACT_APP_DOCS_WEBSITE_URL"];
+export const ABIS_URL = process.env["REACT_APP_ABIS_URL"];
 
 
 export default class Header extends React.Component {
@@ -90,16 +97,30 @@ export default class Header extends React.Component {
                 aria-controls="long-menu"
                 aria-haspopup="true"
                 color="primary"
-                startIcon={<LinkIcon/>}
+                startIcon={<MenuBookIcon/>}
                 className='skBtn'
               > 
                 Docs
               </Button>
               </a>
             </div>
-            <div className="flex-container">
-              <NetworksDropdown/>
+            <div className="flex-container marg-ri-20">
+              <a target="_blank" rel="noreferrer" href={ABIS_URL} className='undec skdLink'>
+              <Button
+                aria-label="more"
+                aria-controls="long-menu"
+                aria-haspopup="true"
+                color="primary"
+                startIcon={<BuildCircleIcon/>}
+                className='skBtn'
+              > 
+                ABIs
+              </Button>
+              </a>
             </div>
+            {/* <div className="flex-container">
+              <NetworksDropdown/>
+            </div> */}
         </Toolbar>
     </SkAppBar>
     )

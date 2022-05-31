@@ -34,10 +34,11 @@ export default function SecureSwitch(props) {
     <FormControlLabel 
         control={
         <Switch
+            color='secondary'
             checked={props.checked} 
             onChange={handleChange} 
             inputProps={{ 'aria-label': 'controlled' }}
         />} 
-        label="HTTPS/WSS" 
+        label="HTTPS/WSS"
     />)
 }

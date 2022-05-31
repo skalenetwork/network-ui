@@ -32,19 +32,17 @@ import OfflineBoltIcon from '@mui/icons-material/OfflineBolt';
 
 import SchainDetails from './SchainDetails'
 
-const stringToColour = function(str) {
+function hashCode(str) {
   let hash = 0;
-  for (let i = 0; i < str.length; i++) {
-      hash = str.charCodeAt(i) + ((hash << 5) - hash);
+  for (var i = 0; i < str.length; i++) {
+    hash = str.charCodeAt(i) + ((hash << 5) - hash);
   }
-  let colour = '#';
-  for (let i = 0; i < 3; i++) {
-    let value = (hash >> (i * 8)) & 0xFF;
-    colour += ('00' + value.toString(16)).substr(-2);
-  }
-  return colour;
+  return hash;
 }
 
+function stringToColour(str) {
+  return `hsl(${hashCode(str) % 360}, 100%, 80%)`;
+}
 
 export default function SchainsAccordion(props) {
   const [expanded, setExpanded] = React.useState(false);
