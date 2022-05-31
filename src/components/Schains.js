@@ -36,7 +36,7 @@ import LanguageIcon from '@mui/icons-material/Language';
 import SchainsAccordion from './SchainsAccordion';
 import metamaskLogo from '../metamask-fox.svg';
 
-import chainsJson from './chains.json'
+// import chainsJson from './chains.json'
 
 export const CHAIN_ID = process.env["REACT_APP_CHAIN_ID"];
 export const NETWORK_NAME = process.env["REACT_APP_NETWORK_NAME"];
@@ -104,8 +104,8 @@ export default class Schains extends React.Component {
   }
 
   async loadSchainsFile() {
-    // let response = await fetch('/files/chains.json');
-    // let chainsJson = await response.json();
+    let response = await fetch('/files/chains.json');
+    let chainsJson = await response.json();
     let schainNames = [];
     for (let chain of chainsJson) {
       schainNames.push(chain.schain[0]);
