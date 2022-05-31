@@ -9,6 +9,7 @@ set -e
 : "${CHAIN_ID?Need to set CHAIN_ID}"
 : "${EXPLORER_URL?Need to set EXPLORER_URL}"
 : "${BASE_PROXY_URL?Need to set BASE_PROXY_URL}"
+: "${ABIS_URL?Need to set ABIS_URL}"
 
 export DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
@@ -21,3 +22,4 @@ echo "REACT_APP_NETWORK_NAME=$NETWORK_NAME" >> $DIR/.env
 echo "REACT_APP_CHAIN_ID=$CHAIN_ID" >> $DIR/.env
 echo "REACT_APP_EXPLORER_URL=$EXPLORER_URL" >> $DIR/.env
 echo "REACT_APP_BASE_PROXY_URL=$BASE_PROXY_URL" >> $DIR/.env
+echo "REACT_APP_ABIS_URL=$ABIS_URL" >> $DIR/.env
