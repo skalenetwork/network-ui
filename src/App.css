@@ -88,6 +88,10 @@
   margin-bottom: 10px !important;
 }
 
+.marg-top-10 {
+  margin-top: 10px !important;
+}
+
 .marg-bott-40 {
   margin-bottom: 40px !important;
 }
@@ -118,7 +122,7 @@
 .fullscreen-spin{
   width: 30px !important;
   height: 30px !important;
-  color: rgb(61, 61, 61) !important;
+  color: #ffffff !important;
 }
 
 .fullscreen-msg {
@@ -131,7 +135,7 @@
 }
 
 .fullscreen-msg-text {
-  color: rgb(61, 61, 61);
+  color: #ffffff;
   font-size: 1.5rem;
   box-sizing: border-box;
   font-family: "Roboto", "Helvetica", "Arial", sans-serif;
@@ -214,7 +218,7 @@
 .linkSurface{
   background-color: #00b3ff75 !important;
   color: #d8efff !important;
-  width: inherit !important;
+  width: 100% !important;
   box-shadow: none !important;
 }
 
@@ -235,7 +239,7 @@
   background-color: rgb(255 144 41 / 54%) !important;
   color: #f6d9bd !important;
   box-shadow: none !important;
-  width: inherit !important;
+  width: 100% !important;
 }
 
 .MetamaskSurface:hover {
@@ -291,4 +295,19 @@
 
 ::-webkit-scrollbar {
   display: none;
+}
+
+.logo{
+  width: 90pt;
+}
+
+
+code {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.overflow-auto {
+  overflow: auto;
 }

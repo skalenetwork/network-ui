@@ -69,7 +69,7 @@ export default function CopySurface(props) {
             <Tooltip title="Click to copy to clipboard">
               <ButtonBase className='copyBoard flex-container'>
             
-                    <div className="flex-container fl-centered-vert fl-grow">
+                    <div className="overflow-auto flex-container fl-centered-vert fl-grow">
                     <code>
                         {props.url}
                     </code>

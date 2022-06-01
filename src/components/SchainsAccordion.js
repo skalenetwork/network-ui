@@ -60,7 +60,7 @@ export default function SchainsAccordion(props) {
           aria-controls="panel1bh-content"
           id="panel1bh-header"
         >
-          <Typography sx={{ width: '33%', flexShrink: 0 }}>
+          <Typography sx={{ width: '100%', flexShrink: 0 }}>
             <div className="flex-container marg-left-10">
               <div className="flex-container fl-centered">
                 <OfflineBoltIcon sx={{ color: stringToColour(schainName) }} className='opacityIcon'/>

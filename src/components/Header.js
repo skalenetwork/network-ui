@@ -104,7 +104,7 @@ export default class Header extends React.Component {
               </Button>
               </a>
             </div>
-            <div className="flex-container marg-ri-20">
+            <div className="flex-container">
               <a target="_blank" rel="noreferrer" href={ABIS_URL} className='undec skdLink'>
               <Button
                 aria-label="more"

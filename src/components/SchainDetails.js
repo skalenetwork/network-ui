@@ -24,6 +24,8 @@
 import Web3 from 'web3';
 
 import React from 'react';
+import Grid from '@mui/material/Grid';
+
 import CopySurface from './CopySurface';
 import LinkSurface from './LinkSurface';
 import SecureSwitch from './SecureSwitch';
@@ -100,23 +102,23 @@ export default function SchainDetails(props) {
       </h3>
       <CopySurface url={schainHash}/>
 
-      <div className='marg-top-30 marg-bott-20 flex-container'>
-        <div className='flex-container'>
+      <Grid container spacing={2} className='marg-top-10 marg-bott-10'>
+        <Grid item xs={12} md={4}>
           {props.connected ? (<MetamaskSurface 
             url={rpcUrl}
             chainId={schainHash}
             chainName={props.schainName}
             explorerUrl={explorerUrl}
           />) : null}
-        </div>
-        <div className='flex-container'>
+        </Grid>
+        <Grid item xs={12} md={4}>
           {EXPLORER_URL ? (
             <div>
               <LinkSurface url={explorerUrl} text='Go to block explorer'/>
             </div>
           ) : null}
-        </div>
-      </div>
+        </Grid>
+      </Grid>
     </div>
   );
 }
