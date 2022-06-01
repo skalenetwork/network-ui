@@ -103,14 +103,16 @@ export default function SchainDetails(props) {
       <CopySurface url={schainHash}/>
 
       <Grid container spacing={2} className='marg-top-10 marg-bott-10'>
-        <Grid item xs={12} md={4}>
-          {props.connected ? (<MetamaskSurface 
-            url={rpcUrl}
-            chainId={schainHash}
-            chainName={props.schainName}
-            explorerUrl={explorerUrl}
-          />) : null}
-        </Grid>
+        {props.connected ? (
+          <Grid item xs={12} md={4}>
+            <MetamaskSurface 
+              url={rpcUrl}
+              chainId={schainHash}
+              chainName={props.schainName}
+              explorerUrl={explorerUrl}
+            />
+          </Grid>
+        ) : null}
         <Grid item xs={12} md={4}>
           {EXPLORER_URL ? (
             <div>
