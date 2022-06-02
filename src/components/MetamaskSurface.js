@@ -37,8 +37,8 @@ export default function MetamaskSurface(props) {
     chainName: NETWORK_NAME + " sChain | " + props.chainName,
     rpcUrls: [props.url],
     nativeCurrency: {
-        name: "SKALE ETH",
-        symbol: "skETH",
+        name: "sFUEL",
+        symbol: "sFUEL",
         decimals: 18
     }
   }
