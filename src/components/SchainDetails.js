@@ -76,14 +76,14 @@ export default function SchainDetails(props) {
   const schainHash = getSchainHash(props.schainName);
 
   const [checked, setChecked] = React.useState(true);
-  // 0x0f00fdf3fc09f
+
   return (
     <div className='schain-details'>
-      <div className="flex-container fl-centered-vert">
+      <div className="flex-container fl-centered-vert">    
         <div className="flex-container fl-grow fl-centered-vert">
-          <h3 className='no-marg'>
+          <h4 className='no-marg'>
             RPC Endpoints
-          </h3>
+          </h4>
         </div>
         <div className="flex-container fl-centered-vert">
           <SecureSwitch checked={checked} setChecked={setChecked}/>
@@ -92,14 +92,14 @@ export default function SchainDetails(props) {
       <CopySurface url={checked ? rpcUrl : rpcHttpUrl}/>
       <CopySurface url={checked ? rpcWssUrl : rpcWsUrl}/>
 
-      <h3 className='no-marg-bott'>
+      <h4 className='no-marg-bott'>
         Filestorage Endpoint
-      </h3>
+      </h4>
       <CopySurface url={checked ? fsUrl : fsHttpUrl}/>
       
-      <h3 className='no-marg-bott'>
+      <h4 className='no-marg-bott'>
         Chain ID
-      </h3>
+      </h4>
       <CopySurface url={schainHash}/>
 
       <Grid container spacing={2} className='marg-top-10 marg-bott-10'>

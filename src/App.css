@@ -187,7 +187,7 @@
 
 .copyBoard{
   margin: 10px 0 !important;
-  padding: 20pt !important;
+  padding: 15pt !important;
   background-color: #3a3a3a !important;
   border-radius: 20px !important;
   border: none !important;
@@ -202,7 +202,7 @@
 
 .copy-icon {
   color: #ffffff;
-  width: 16pt !important;
+  width: 13pt !important;
 }
 
 .undec{
@@ -268,7 +268,9 @@
 }
 
 .skBtn{
-  color: rgb(217, 224, 33) !important;
+  color: #ffffff !important;
+  opacity: 0.8 !important;
+  text-transform: none !important;
 }
 
 .text-secondary{
@@ -310,4 +312,23 @@ code {
 
 .overflow-auto {
   overflow: auto;
+}
+
+.MuiSnackbarContent-root{
+  border-radius: 20px !important;
+  background-color: #3a3a3a !important;
+  color: white !important;
+}
+
+.MuiSnackbarContent-message{
+  font-weight: 500;
+}
+
+.chainInfoIcon {
+  width: 12pt !important;
+  opacity: 0.5;
+}
+
+.chainInfoText{
+  opacity: 0.5;
 }

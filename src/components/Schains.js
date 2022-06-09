@@ -106,11 +106,11 @@ export default class Schains extends React.Component {
   async loadSchainsFile() {
     let response = await fetch('/files/chains.json');
     let chainsJson = await response.json();
-    let schainNames = [];
+    let schains = [];
     for (let chain of chainsJson) {
-      schainNames.push(chain.schain[0]);
+      schains.push(chain.schain);
     }
-    return schainNames;
+    return schains;
   }
  
   async loadSchains() {

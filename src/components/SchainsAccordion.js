@@ -26,9 +26,15 @@ import Accordion from '@mui/material/Accordion';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import Typography from '@mui/material/Typography';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import Tooltip from '@mui/material/Tooltip';
 
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import OfflineBoltIcon from '@mui/icons-material/OfflineBolt';
+import LooksOneIcon from '@mui/icons-material/LooksOne';
+import LooksTwoIcon from '@mui/icons-material/LooksTwo';
+
+import BlurOnIcon from '@mui/icons-material/BlurOn';
+import BlurOffIcon from '@mui/icons-material/BlurOff';
 
 import SchainDetails from './SchainDetails'
 
@@ -44,6 +50,10 @@ function stringToColour(str) {
   return `hsl(${hashCode(str) % 360}, 100%, 80%)`;
 }
 
+function timestampToDate(ts) {
+  return new Intl.DateTimeFormat('en-US', { year: '2-digit', month: '2-digit', day: '2-digit' }).format(ts * 1000)
+}
+
 export default function SchainsAccordion(props) {
   const [expanded, setExpanded] = React.useState(false);
 
@@ -53,26 +63,56 @@ export default function SchainsAccordion(props) {
 
   return (
     <div>
-      {props.schains.map((schainName) => (
-        <Accordion key={schainName} expanded={expanded === schainName} onChange={handleChange(schainName)}>
+      {props.schains.map((schain) => (
+        <Accordion key={schain[0]} expanded={expanded === schain[0]} onChange={handleChange(schain[0])}>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1bh-content"
           id="panel1bh-header"
         >
-          <Typography sx={{ width: '100%', flexShrink: 0 }}>
+          <Typography sx={{ width: '100%', flexShrink: 6 }}>
             <div className="flex-container marg-left-10">
               <div className="flex-container fl-centered">
-                <OfflineBoltIcon sx={{ color: stringToColour(schainName) }} className='opacityIcon'/>
+                <OfflineBoltIcon sx={{ color: stringToColour(schain[0]) }} className='opacityIcon'/>
               </div>
-              <p className="schain-name flex-container">
-                {schainName}
+              <p className="schain-name flex-container fl-grow">
+                {schain[0]}
               </p>
+
+              <Tooltip title="SKALE chain creation date">
+                <h6 className="no-marg fl-centered flex-container chainInfoText">
+                  {timestampToDate(schain[5])}
+                </h6>
+              </Tooltip>
+
+              <Tooltip title={"SKALE chain v" + (schain[9] + 1)}>
+                {(schain[9] == 0) ? (
+                  <div className="marg-left-10 marg-ri-10 fl-centered flex-container">
+                    <LooksOneIcon className='chainInfoIcon'/>
+                  </div>
+                ) : (
+                  <div className="marg-left-10 marg-ri-10 fl-centered flex-container">
+                    <LooksTwoIcon className='chainInfoIcon'/>
+                  </div>
+                )}
+              </Tooltip>
+
+              <Tooltip title={"Multitransaction mode is " + (schain[11] ? "ON" : "OFF")}>
+                {(schain[11]) ? (
+                  <div className="marg-ri-10 fl-centered flex-container">
+                    <BlurOnIcon className='chainInfoIcon'/>
+                  </div>
+                ) : (
+                  <div className="marg-ri-10 fl-centered flex-container">
+                    <BlurOffIcon className='chainInfoIcon'/>
+                  </div>
+                )}
+              </Tooltip>
             </div>
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <SchainDetails schainName={schainName} connected={props.connected} />
+          <SchainDetails schainName={schain[0]} connected={props.connected} />
         </AccordionDetails>
       </Accordion>
       ))}
