@@ -24,22 +24,28 @@
 import Web3 from 'web3';
 
 import React from 'react';
-import Grid from '@mui/material/Grid';
 
 import CopySurface from './CopySurface';
-import LinkSurface from './LinkSurface';
-import SecureSwitch from './SecureSwitch';
-import MetamaskSurface from './MetamaskSurface';
 
-import { rmPad0x } from '../helper'
+import OfflineBoltIcon from '@mui/icons-material/OfflineBolt';
+import LanguageIcon from '@mui/icons-material/Language';
+import AddCircleIcon from '@mui/icons-material/AddCircle';
 
-export const BASE_PROXY_URL = process.env["REACT_APP_BASE_PROXY_URL"];
-export const EXPLORER_URL = process.env["REACT_APP_EXPLORER_URL"];
+import Button from '@mui/material/Button';
+import WidgetsIcon from '@mui/icons-material/Widgets';
+
+import { rmPad0x, stringToColour } from '../helper';
+
+
+const BASE_PROXY_URL = process.env["REACT_APP_BASE_PROXY_URL"];
+const EXPLORER_URL = process.env["REACT_APP_EXPLORER_URL"];
+const NETWORK_NAME = process.env["REACT_APP_NETWORK_NAME"];
 
 const HTTP_PREFIX = 'http://';
 const HTTPS_PREFIX = 'https://';
 const WS_PREFIX = 'ws://';
 const WSS_PREFIX = 'wss://';
+
 
 function getRpcUrl(schainName, prefix) {
   return prefix + BASE_PROXY_URL + '/v1/' + schainName;
@@ -77,50 +83,113 @@ export default function SchainDetails(props) {
 
   const [checked, setChecked] = React.useState(true);
 
+  const networkParams = {
+    chainId: schainHash,
+    chainName: NETWORK_NAME + " | " + getChainName(props.schainName),
+    rpcUrls: [rpcUrl],
+    nativeCurrency: {
+      name: "sFUEL",
+      symbol: "sFUEL",
+      decimals: 18
+    }
+  }
+
+  function getChainName(schainName) {
+    if (props.chainMeta) {
+      return props.chainMeta['alias'];
+    }
+    return schainName;
+  }
+
+  function getBgColor(schainName) {
+    if (props.chainMeta) {
+      return props.chainMeta['background'];
+    }
+    return stringToColour(schainName);
+  }
+
+
+  function getIcon(schainName) {
+    let iconPath = schainName + '.png';
+    if (props.icons[iconPath]) {
+      return <img alt='logo' src={props.icons[iconPath].default} />
+    }
+    return <OfflineBoltIcon className='default-chain-icon' />;
+  }
+
+  async function addNetwork() {
+    await window.ethereum.request({
+      method: 'wallet_addEthereumChain',
+      params: [networkParams],
+    });
+  }
+
   return (
     <div className='schain-details'>
-      <div className="flex-container fl-centered-vert">    
-        <div className="flex-container fl-grow fl-centered-vert">
-          <h4 className='no-marg'>
-            RPC Endpoints
-          </h4>
-        </div>
-        <div className="flex-container fl-centered-vert">
-          <SecureSwitch checked={checked} setChecked={setChecked}/>
-        </div>
+      <div
+        className='schain-details-top flex-container fl-centered'
+        style={{ backgroundColor: getBgColor(props.schainName) }}
+      >
+        {getIcon(props.schainName)}
       </div>
-      <CopySurface url={checked ? rpcUrl : rpcHttpUrl}/>
-      <CopySurface url={checked ? rpcWssUrl : rpcWsUrl}/>
+      <div className='schain-details-bott'>
+        <div className='flex-container'>
+          <h1 className='no-marg fl-grow'>
+            {getChainName(props.schainName)}
+          </h1>
+          <div className='marg-left-10'>
+            {EXPLORER_URL ? (
+              <a target="_blank" rel="noreferrer" href={explorerUrl} className='undec'>
+                <Button size="small" variant="contained website-btn chain-btn" startIcon={<WidgetsIcon />}>
+                  Explorer
+                </Button>
+              </a>
+            ) : null}
+          </div>
+          <div className='marg-left-10'>
+            <Button
+              startIcon={<AddCircleIcon />}
+              size="small"
+              variant="contained website-btn chain-btn"
+              onClick={addNetwork}
+            >
+              Add network
+            </Button>
+          </div>
+          {(props.chainMeta && props.chainMeta.url) ? <div className='marg-left-10'>
+            <a target="_blank" rel="noreferrer" href={props.chainMeta.url} className='undec'>
+              <Button size="small" variant="contained website-btn chain-btn" startIcon={<LanguageIcon />}>
+                Open
+              </Button>
+            </a>
+          </div> : null}
 
-      <h4 className='no-marg-bott'>
-        Filestorage Endpoint
-      </h4>
-      <CopySurface url={checked ? fsUrl : fsHttpUrl}/>
-      
-      <h4 className='no-marg-bott'>
-        Chain ID
-      </h4>
-      <CopySurface url={schainHash}/>
+        </div>
+        
+        <div className="marg-top-20 flex-container fl-centered-vert">
+          {/* <div className="flex-container fl-grow fl-centered-vert">
+            <h4 className='no-marg secondary-text'>
+              RPC Endpoints
+            </h4>
+          </div> */}
+          {/* <div className="flex-container fl-centered-vert">
+          <SecureSwitch checked={checked} setChecked={setChecked} />
+        </div> */}
+        </div>
+        <CopySurface url={checked ? rpcUrl : rpcHttpUrl} />
+        <CopySurface url={checked ? rpcWssUrl : rpcWsUrl} />
 
-      <Grid container spacing={2} className='marg-top-10 marg-bott-10'>
-        {props.connected ? (
-          <Grid item xs={12} md={4}>
-            <MetamaskSurface 
-              url={rpcUrl}
-              chainId={schainHash}
-              chainName={props.schainName}
-              explorerUrl={explorerUrl}
-            />
-          </Grid>
-        ) : null}
-        <Grid item xs={12} md={4}>
-          {EXPLORER_URL ? (
-            <div>
-              <LinkSurface url={explorerUrl} text='Go to block explorer'/>
-            </div>
-          ) : null}
-        </Grid>
-      </Grid>
+        <h4 className='no-marg-bott secondary-text'>
+          Filestorage Endpoint
+        </h4>
+        <CopySurface url={checked ? fsUrl : fsHttpUrl} />
+
+        <h4 className='no-marg-bott secondary-text'>
+          Chain ID
+        </h4>
+        <CopySurface url={schainHash} />
+      </div>
+
     </div>
   );
 }

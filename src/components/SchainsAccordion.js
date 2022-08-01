@@ -36,7 +36,11 @@ import LooksTwoIcon from '@mui/icons-material/LooksTwo';
 import BlurOnIcon from '@mui/icons-material/BlurOn';
 import BlurOffIcon from '@mui/icons-material/BlurOff';
 
-import SchainDetails from './SchainDetails'
+import SchainDetails from './SchainDetails';
+
+import Button from '@mui/material/Button';
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
 
 function hashCode(str) {
   let hash = 0;
@@ -63,6 +67,60 @@ export default function SchainsAccordion(props) {
 
   return (
     <div>
+
+      <Box sx={{ flexGrow: 1 }}>
+        <Grid container spacing={3}>
+          {props.schains.map((schain) => (
+            <Grid className='fl-centered' item xs={3}>
+                <div className='flexm-container fl-centered'>
+                  <Button
+                    className='app-icon opacityIcon'
+                    style={{backgroundColor: stringToColour(schain[0])}}
+                  >
+                    <OfflineBoltIcon className='default-chain-icon'/>
+                  </Button>
+                  <div className='flex-container fl-centered app-bott' style={{backgroundColor: stringToColour(schain[0])}}>
+                      <div className='app-bott-ins flex-container fl-centered'>
+                      <Tooltip title="SKALE chain creation date">
+                        <h6 className="no-marg fl-centered flex-container chainInfoText">
+                          {timestampToDate(schain[5])}
+                        </h6>
+                      </Tooltip>
+
+                      <Tooltip title={"SKALE chain v1" + (schain[9] + 1)}>
+                        {(schain[9] == 0) ? (
+                          <div className="marg-left-10 marg-ri-10 fl-centered flex-container">
+                            <LooksOneIcon className='chainInfoIcon'/>
+                          </div>
+                        ) : (
+                          <div className="marg-left-10 marg-ri-10 fl-centered flex-container">
+                            <LooksTwoIcon className='chainInfoIcon'/>
+                          </div>
+                        )}
+                      </Tooltip>
+
+                      <Tooltip title={"Multitransaction mode is " + (schain[11] ? "ON" : "OFF")}>
+                        {(schain[11]) ? (
+                          <div className="marg-ri-10 fl-centered flex-container">
+                            <BlurOnIcon className='chainInfoIcon'/>
+                          </div>
+                        ) : (
+                          <div className="marg-ri-10 fl-centered flex-container">
+                            <BlurOffIcon className='chainInfoIcon'/>
+                          </div>
+                        )}
+                      </Tooltip>
+                      </div>
+                    </div>
+                </div>
+              <p className="schain-name flex-container fl-centered">
+                {schain[0]}
+              </p>
+            </Grid>
+          ))}
+        </Grid>
+      </Box>
+
       {props.schains.map((schain) => (
         <Accordion key={schain[0]} expanded={expanded === schain[0]} onChange={handleChange(schain[0])}>
         <AccordionSummary

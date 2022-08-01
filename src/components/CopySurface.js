@@ -87,6 +87,7 @@ export default function CopySurface(props) {
             onClose={handleClose}
             message='URL copied to clipboard'
             action={action}
+            severity="success"
         />
     </div>
     

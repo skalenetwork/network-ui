@@ -25,3 +25,5 @@ yarn-error.log*
 .env
 manager.json
 package-lock.json
+
+src/meta/*

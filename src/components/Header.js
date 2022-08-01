@@ -24,71 +24,39 @@
 import React from 'react';
 import styled from '@emotion/styled'
 
-import detectEthereumProvider from '@metamask/detect-provider';
-
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Button from '@mui/material/Button';
 
-import NetworksDropdown from './NetworksDropdown';
+import { Link } from "react-router-dom";
 import logo from '../skale-logo.svg';
 
-import LinkIcon from '@mui/icons-material/Link';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
-import ArticleIcon from '@mui/icons-material/Article';
 import BuildCircleIcon from '@mui/icons-material/BuildCircle';
 
 const SkAppBar = styled(AppBar)({
     // 'background-color': 'rgb(22, 23, 29)',
-    'background-color': '#141414',
+    'backgroundColor': '#141414',
     padding: '15pt 0',
-    'box-shadow': 'none',
-    'background-image': 'none'
+    'boxShadow': 'none',
+    'backgroundImage': 'none'
 });
 
 export const MAIN_WEBSITE_URL = process.env["REACT_APP_MAIN_WEBSITE_URL"];
 export const DOCS_WEBSITE_URL = process.env["REACT_APP_DOCS_WEBSITE_URL"];
 export const ABIS_URL = process.env["REACT_APP_ABIS_URL"];
+export const NETWORK_NAME = process.env["REACT_APP_NETWORK_NAME"];
 
 
 export default class Header extends React.Component {
-  constructor(props) {
-    super(props);
-    this.checkWeb3Connection=this.checkWeb3Connection.bind(this);
-  }
-
-  componentDidMount() {
-    this.checkWeb3Connection();
-    var intervalId = setInterval(this.checkWeb3Connection, 5000);
-    this.setState({intervalId: intervalId});
-  }
- 
-  componentWillUnmount() {
-    clearInterval(this.state.intervalId);
-  }
- 
- async checkWeb3Connection() {
-    let provider;
-    try {
-      provider = await detectEthereumProvider();
-    } catch {
-      provider = null;
-    }
-    
-    if (provider && !this.props.connected) {
-      this.props.setConnected(true);
-      this.props.setProvider(provider);
-    }
-  }
-
   render() {
     return (
       <SkAppBar position="fixed" className="sk-header">
         <Toolbar className='flex-container'>
             <div className="flex-container fl-centered-vert fl-grow">
-              <a target="_blank" rel="noreferrer" href={MAIN_WEBSITE_URL} className='undec'>
+              <Link to="/">
                 <img src={logo} className="logo" alt="logo" />
-              </a>
+              </Link>
             </div>
             <div className="flex-container marg-ri-20">
               <a target="_blank" rel="noreferrer" href={DOCS_WEBSITE_URL} className='undec skdLink'>
@@ -118,9 +86,6 @@ export default class Header extends React.Component {
               </Button>
               </a>
             </div>
-            {/* <div className="flex-container">
-              <NetworksDropdown/>
-            </div> */}
         </Toolbar>
     </SkAppBar>
     )

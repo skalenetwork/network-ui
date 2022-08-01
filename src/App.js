@@ -24,10 +24,11 @@
 import './App.css';
 import Header from './components/Header';
 import Schains from './components/Schains';
+import ScrollToTop from './components/ScrollToTop';
 
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
-
+import { Routes, Route } from "react-router-dom";
 
 import React, { useState } from 'react';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
@@ -35,35 +36,25 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 let theme = createTheme({
   palette: {
-    mode: 'dark',
-    background: {
-      paper: '#000000'
-    },
-    primary: {
-      main: '#000000',
-    },
-    secondary: {
-      // main: '#edf2ff',
-      main: '#d9e021',
-    },
+    mode: 'dark'
   },
 });
 
 
 function App() {
   const [connected, setConnected] = useState(undefined);
-  const [provider, setProvider] = useState(undefined);
   return (
     <ThemeProvider theme={theme}>
+      <ScrollToTop />
       <div className="AppWrap">
-        <Header connected={connected} setConnected={setConnected} setProvider={setProvider}/>
+        <Header connected={connected} setConnected={setConnected}/>
         <div className="mainApp">
-          <div className="appContent">
-          <Box component="span" m={1} >
-            <Container maxWidth="md">
-                <Schains connected={connected} provider={provider}/>
-            </Container>
-          </Box>
+          <div id='appContentScroll' className="appContent">
+            <Box component="span" m={1} >
+              <Container maxWidth="md">
+                <Schains/>
+              </Container>
+            </Box>
           </div>
          
         </div>

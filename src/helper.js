@@ -38,3 +38,31 @@ export function remove0x(s) {
     if (!s.startsWith('0x')) return s;
     return s.slice(2);
 }
+
+function hashCode(str) {
+    let hash = 0;
+    for (var i = 0; i < str.length; i++) {
+        hash = str.charCodeAt(i) + ((hash << 5) - hash);
+    }
+    return hash;
+}
+
+export function stringToColour(str) {
+    return `hsl(${hashCode(str) % 360}, 100%, 80%)`;
+}
+
+export function timestampToDate(ts) {
+    return new Intl.DateTimeFormat('en-US', { year: '2-digit', month: '2-digit', day: '2-digit' }).format(ts * 1000)
+}
+
+
+export function importAll(r) {
+    let items = {};
+    r.keys().map((item, index) => { return items[item.replace('./', '')] = r(item); });
+    return items;
+}
+
+
+export function capitalize(s) {
+    return s && s[0].toUpperCase() + s.slice(1);
+}

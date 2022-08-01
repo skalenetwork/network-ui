@@ -45,16 +45,19 @@
 }
 
 .AppWrap{
-  background-color: #141414;
+  background-color: #000000;
   height: 100vh;
 }
 
 .card-header{
-  margin-bottom: 5px;
-  margin-top: 0;
+  margin-bottom: 30pt !important;
+  margin-top: 20pt !important;
   color: #ffffff;
 }
+ 
+.app-bott{
 
+}
 
 .marg-left-10{
   margin-left: 10px;
@@ -95,6 +98,11 @@
 .marg-bott-40 {
   margin-bottom: 40px !important;
 }
+
+.marg-top-40 {
+  margin-top: 40px !important;
+}
+
 
 .no-marg-top{
   margin-top: 0 !important;
@@ -171,14 +179,16 @@
 
 .schain-name {
   font-weight: bold;
-  padding-left: 10pt;
   text-transform: uppercase;
-  font-size: 0.8rem;
+  font-size: 0.65rem;
+  color: white;
+  padding-top: 5pt;
+  text-align: center;
 }
 
 .opacityIcon{
-  opacity: 0.8;
-  filter: saturate(90%);
+  opacity: 0.9;
+  filter: saturate(90%) brightness(0.95);
 }
 
 .Mui-expanded{
@@ -196,10 +206,6 @@
   font-size: 0.9rem !important;
 }
 
-.schain-details{
-  margin: -10px 10px 0 10px;
-}
-
 .copy-icon {
   color: #ffffff;
   width: 13pt !important;
@@ -207,7 +213,6 @@
 
 .undec{
   text-decoration: none !important;
-  color: inherit !important;
 }
 
 .copyBoard:hover{
@@ -274,7 +279,7 @@
 }
 
 .text-secondary{
-  font-size: 0.8rem !important;
+  font-size: 0.9rem !important;
   color: #aaaaaa;
   font-weight: 500;
   margin: 5pt 0;
@@ -316,19 +321,176 @@ code {
 
 .MuiSnackbarContent-root{
   border-radius: 20px !important;
-  background-color: #3a3a3a !important;
-  color: white !important;
+  /* background-color: #3a3a3a !important;
+  color: #0000008a !important; */
 }
 
 .MuiSnackbarContent-message{
-  font-weight: 500;
+  font-weight: 400;
 }
 
 .chainInfoIcon {
   width: 12pt !important;
-  opacity: 0.5;
+  color: #0000008a !important;
 }
 
 .chainInfoText{
-  opacity: 0.5;
+  color: #0000008a !important;
+}
+
+.app-bott {
+  border-bottom-left-radius: 25px !important;
+  border-bottom-right-radius: 25px !important;
+
+  border-bottom: 1px #292929 solid !important;
+  border-right: 1px #292929 solid !important;
+  border-left: 1px #292929 solid !important;
+}
+
+.app-bott-ins {
+  backdrop-filter: brightness(0.6);
+  width: 100%;
+  padding: 5pt 0;
+}
+
+.app-bott h6, .app-bott svg{
+  color: #000000cc !important;
+}
+
+.app-bott-dark h6, .app-bott-dark svg{
+  color: #ffffffc9 !important;
+}
+
+
+
+.app-icon{
+  width: 100%;
+  height: 106px;
+  border-top-left-radius: 25px !important;
+  border-top-right-radius: 25px !important;
+
+  border-bottom-left-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+
+
+  border-top: 1px #292929 solid !important;
+  border-right: 1px #292929 solid !important;
+  border-left: 1px #292929 solid !important;
+}
+
+
+.schain-details-top{
+  border-top-left-radius: 25px !important;
+  border-top-right-radius: 25px !important;
+
+  border-top: 1px #292929 solid !important;
+  border-right: 1px #292929 solid !important;
+  border-left: 1px #292929 solid !important;
+
+  padding: 20pt;
+  height: 60pt;
+}
+
+.schain-details-top img{
+  max-height: 80%;
+  max-width: 80%;
+}
+
+.schain-details-bott{
+  border-bottom-left-radius: 25px !important;
+  border-bottom-right-radius: 25px !important;
+
+  border-bottom: 1px #292929 solid !important;
+  border-right: 1px #292929 solid !important;
+  border-left: 1px #292929 solid !important;
+
+  padding: 20pt;
+}
+
+.schain-options .MuiChip-root svg{
+  height: 15pt;
+  width: 15pt;
+  margin-left: 10px !important;
+}
+
+.app-icon img {
+  max-height: 80%;
+  max-width: 80%;
+  text-align: center;
+}
+
+.app-icon svg {
+  color: black !important;
+}
+
+
+.default-chain-icon{
+  width: 40pt !important;
+  height: 40pt !important;
+}
+
+
+
+code {
+  color: white;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+
+
+
+li a {
+  dcolor: rgb(45, 203, 116) !important;
+  color: rgb(217, 224, 33) !important;
+}
+
+
+
+.chain-btn, .chain-btn svg{
+  dcolor: white;
+  color: black !important;
+}
+
+.explorer-btn {
+  background-color: #523288 !important;
+}
+
+.metamask-btn {
+  background-color: #824810 !important
+}
+
+
+.website-btn {
+  background-color: rgb(217, 224, 33) !important;
+}
+
+.categories{
+  margin-top: -40px;
+}
+
+
+
+.fade-enter {
+  opacity: 0;
+  transform: translate(0, 25px);
+  z-index: 1;
+}
+.fade-enter.fade-enter-active {
+  opacity: 1;
+  transform: translate(0, 0);
+
+  transition: opacity 250ms ease-out, transform 300ms ease;
+}
+.fade-exit {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+.fade-exit.fade-exit-active {
+  opacity: 0;
+  transform: translate(0, 30px);
+
+  transition: opacity 250ms ease-out, transform 300ms ease;
 }
