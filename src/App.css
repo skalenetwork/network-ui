@@ -332,3 +332,29 @@ code {
 .chainInfoText{
   opacity: 0.5;
 }
+
+.dMuiAccordionSummary-expandIconWrapper{
+  display: none !important;
+}
+
+.MuiAccordionSummary-expandIconWrapper.Mui-expanded{
+  display: none !important;
+}
+
+
+.MuiAccordion-root .closeBth{
+  display: none !important;
+}
+
+.Mui-expanded .closeBth{
+  display: inherit !important;
+}
+
+.closeBth svg{
+  height: 16pt;
+  width: 16pt;
+}
+
+.closeBth {
+  margin-left: 76px !important;
+}

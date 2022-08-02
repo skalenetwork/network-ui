@@ -32,11 +32,19 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import OfflineBoltIcon from '@mui/icons-material/OfflineBolt';
 import LooksOneIcon from '@mui/icons-material/LooksOne';
 import LooksTwoIcon from '@mui/icons-material/LooksTwo';
+import Button from '@mui/material/Button';
+
+import IconButton from '@mui/material/IconButton';
+import CloseIcon from '@mui/icons-material/Close';
 
 import BlurOnIcon from '@mui/icons-material/BlurOn';
 import BlurOffIcon from '@mui/icons-material/BlurOff';
 
 import SchainDetails from './SchainDetails'
+
+
+export const NETWORK_NAME = process.env["REACT_APP_NETWORK_NAME"];
+
 
 function hashCode(str) {
   let hash = 0;
@@ -66,7 +74,16 @@ export default function SchainsAccordion(props) {
       {props.schains.map((schain) => (
         <Accordion key={schain[0]} expanded={expanded === schain[0]} onChange={handleChange(schain[0])}>
         <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
+          expandIcon={<Button
+            variant="contained"
+            // startIcon={<LanguageIcon/>}
+            size="small"
+          
+            style={{'backgroundColor':  stringToColour(NETWORK_NAME), color: '#000000', height: '25pt', 'fontSize': '0.7125rem', opacity: '0.9', filter: 'saturate(90%)'}}
+            disabled={true}
+          >
+            Get endpoints
+          </Button>}
           aria-controls="panel1bh-content"
           id="panel1bh-header"
         >
@@ -108,6 +125,15 @@ export default function SchainsAccordion(props) {
                   </div>
                 )}
               </Tooltip>
+              <div className="fl-centered flex-container marg-left-20">
+                <IconButton disabled color="primary" className='closeBth' size='small'
+                  style={{'backgroundColor':  stringToColour(NETWORK_NAME), color: '#000000', opacity: '0.9', filter: 'saturate(90%)'}}
+                >
+                  <CloseIcon />
+                </IconButton>
+              </div>
+
+              
             </div>
           </Typography>
         </AccordionSummary>
