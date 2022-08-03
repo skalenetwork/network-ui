@@ -494,3 +494,11 @@ li a {
 
   transition: opacity 250ms ease-out, transform 300ms ease;
 }
+
+.MuiGrid-item {
+  transition: transform .2s;
+}
+
+.MuiGrid-item:hover {
+  transform: scale(1.1);
+}
