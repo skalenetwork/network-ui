@@ -6,4 +6,4 @@ set -e
 
 export DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
-cp -R $DIR/skale-network/meta/$NETWORK_NAME/ $DIR/src/meta/
+cp -R $DIR/skale-network/metadata/$NETWORK_NAME/ $DIR/src/meta/
