@@ -33,12 +33,18 @@ import { Routes, Route } from "react-router-dom";
 import React, { useState } from 'react';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
+import { Metaport, interfaces } from '@skalenetwork/metaport';
+
+import metaportConfig from './metaportConfig.json'
+
 
 let theme = createTheme({
   palette: {
     mode: 'dark'
   },
 });
+
+const metaport = new Metaport(metaportConfig);
 
 
 function App() {
@@ -47,16 +53,15 @@ function App() {
     <ThemeProvider theme={theme}>
       <ScrollToTop />
       <div className="AppWrap">
-        <Header connected={connected} setConnected={setConnected}/>
+        <Header connected={connected} setConnected={setConnected} />
         <div className="mainApp">
           <div id='appContentScroll' className="appContent">
             <Box component="span" m={1} >
               <Container maxWidth="md">
-                <Schains/>
+                <Schains metaport={metaport} />
               </Container>
             </Box>
           </div>
-         
         </div>
       </div>
     </ThemeProvider>

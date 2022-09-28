@@ -34,14 +34,18 @@ export default function CategorySection(props) {
   if (!props.schains || props.schains.length === 0) return;
   return (
     <div className="marg-top-40">
-      <Chip label={props.schains.length + ' SKALE chains'} className="marg-bott-10" size="small" />
+      <Chip
+        label={props.schains.length + ((props.schains.length === 1) ? ' SKALE chain' : ' SKALE chains')}
+        className="marg-bott-10 categoryCountChip"
+        size="small"
+      />
       <h1 className='card-header no-marg-top'>
         {props.category}
       </h1>
       <Box sx={{ flexGrow: 1 }}>
         <Grid container spacing={3}>
           {props.schains.map((schain) => (
-            <Grid key={schain[0]} className='fl-centered' item md={3} sm={6} xs={6}>
+            <Grid key={schain[0]} className='fl-centered dappCard' item md={3} sm={6} xs={6}>
               <ChainCard icons={props.icons} schain={schain}/>
             </Grid>
           ))}

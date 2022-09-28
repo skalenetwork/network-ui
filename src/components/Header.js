@@ -35,11 +35,10 @@ import MenuBookIcon from '@mui/icons-material/MenuBook';
 import BuildCircleIcon from '@mui/icons-material/BuildCircle';
 
 const SkAppBar = styled(AppBar)({
-    // 'background-color': 'rgb(22, 23, 29)',
-    'backgroundColor': '#141414',
-    padding: '15pt 0',
-    'boxShadow': 'none',
-    'backgroundImage': 'none'
+  'backgroundColor': '#141414',
+  padding: '15pt 0',
+  'boxShadow': 'none',
+  'backgroundImage': 'none'
 });
 
 export const MAIN_WEBSITE_URL = process.env["REACT_APP_MAIN_WEBSITE_URL"];
@@ -53,41 +52,53 @@ export default class Header extends React.Component {
     return (
       <SkAppBar position="fixed" className="sk-header">
         <Toolbar className='flex-container'>
-            <div className="flex-container fl-centered-vert fl-grow">
-              <Link to="/">
-                <img src={logo} className="logo" alt="logo" />
-              </Link>
-            </div>
-            <div className="flex-container marg-ri-20">
-              <a target="_blank" rel="noreferrer" href={DOCS_WEBSITE_URL} className='undec skdLink'>
+          <div className="flex-container fl-centered-vert fl-grow">
+            <Link to="/">
+              <img src={logo} className="logo" alt="logo" />
+            </Link>
+          </div>
+          <div className="flex-container marg-ri-10">
+            <a target="_blank" rel="noreferrer" href={ABIS_URL} className='undec skdLink'>
               <Button
                 aria-label="more"
                 aria-controls="long-menu"
                 aria-haspopup="true"
                 color="primary"
-                startIcon={<MenuBookIcon/>}
                 className='skBtn'
-              > 
-                Docs
-              </Button>
-              </a>
-            </div>
-            <div className="flex-container">
-              <a target="_blank" rel="noreferrer" href={ABIS_URL} className='undec skdLink'>
-              <Button
-                aria-label="more"
-                aria-controls="long-menu"
-                aria-haspopup="true"
-                color="primary"
-                startIcon={<BuildCircleIcon/>}
-                className='skBtn'
-              > 
+              >
                 ABIs
               </Button>
-              </a>
-            </div>
+            </a>
+          </div>
+          <div className="flex-container marg-ri-10">
+            <a target="_blank" rel="noreferrer" href={DOCS_WEBSITE_URL} className='undec skdLink'>
+              <Button
+                aria-label="more"
+                aria-controls="long-menu"
+                aria-haspopup="true"
+                color="primary"
+                className='skBtn'
+              >
+                Documentation
+              </Button>
+            </a>
+          </div>
+
+          <div className="flex-container">
+            <a target="_blank" rel="noreferrer" href="https://skale.space/" className='undec skdLink'>
+              <Button
+                aria-label="more"
+                aria-controls="long-menu"
+                aria-haspopup="true"
+                color="primary"
+                className='skBtn'
+              >
+                Main website
+              </Button>
+            </a>
+          </div>
         </Toolbar>
-    </SkAppBar>
+      </SkAppBar>
     )
   }
 }

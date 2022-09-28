@@ -30,9 +30,12 @@ import CopySurface from './CopySurface';
 import OfflineBoltIcon from '@mui/icons-material/OfflineBolt';
 import LanguageIcon from '@mui/icons-material/Language';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
+import Typography from '@mui/material/Typography';
+import Grid from '@mui/material/Grid';
 
 import Button from '@mui/material/Button';
 import WidgetsIcon from '@mui/icons-material/Widgets';
+import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
 
 import { rmPad0x, stringToColour } from '../helper';
 
@@ -63,9 +66,13 @@ function getExplorerUrl(schainName) {
   return HTTPS_PREFIX + schainName + '.' + EXPLORER_URL;
 }
 
-function getSchainHash(schainName) {
+function getChainId(schainName) {
   let hash = Web3.utils.soliditySha3(schainName).substring(0, 15);
   return rmPad0x(hash);
+}
+
+function getSchainHash(schainName) {
+  return Web3.utils.sha3(schainName);
 }
 
 export default function SchainDetails(props) {
@@ -79,12 +86,13 @@ export default function SchainDetails(props) {
   const fsHttpUrl = getFsUrl(props.schainName, HTTP_PREFIX);
 
   const explorerUrl = getExplorerUrl(props.schainName);
+  const chainId = getChainId(props.schainName);
   const schainHash = getSchainHash(props.schainName);
 
   const [checked, setChecked] = React.useState(true);
 
   const networkParams = {
-    chainId: schainHash,
+    chainId: chainId,
     chainName: NETWORK_NAME + " | " + getChainName(props.schainName),
     rpcUrls: [rpcUrl],
     nativeCurrency: {
@@ -137,20 +145,49 @@ export default function SchainDetails(props) {
           <h1 className='no-marg fl-grow'>
             {getChainName(props.schainName)}
           </h1>
-          <div className='marg-left-10'>
+        </div>
+        {(props.chainMeta && props.chainMeta.description) ? (
+          <Typography
+            color="text.secondary"
+            className='marg-top-10 marg-bott-20 dAppDesc'>
+            {props.chainMeta.description}
+          </Typography>
+        ) : null}
+        <div className='flex-container marg-top-20'>
+          <div className='mardg-left-10'>
             {EXPLORER_URL ? (
               <a target="_blank" rel="noreferrer" href={explorerUrl} className='undec'>
-                <Button size="small" variant="contained website-btn chain-btn" startIcon={<WidgetsIcon />}>
+                <Button
+                  size="small"
+                  variant="contained website-btn actions-btn"
+                  startIcon={<WidgetsIcon />}
+                >
                   Explorer
                 </Button>
               </a>
             ) : null}
           </div>
+          {(props.chainMeta && props.chainMeta.faucetUrl) ? (
+            <a
+              target="_blank"
+              rel="noreferrer"
+              href={props.chainMeta.faucetUrl}
+              className='undec marg-left-10'
+            >
+              <Button
+                size="small"
+                variant="contained website-btn actions-btn"
+                startIcon={<AccountBalanceWalletIcon />}
+              >
+                Faucet
+              </Button>
+            </a>
+          ) : null}
           <div className='marg-left-10'>
             <Button
               startIcon={<AddCircleIcon />}
               size="small"
-              variant="contained website-btn chain-btn"
+              variant="contained website-btn actions-btn"
               onClick={addNetwork}
             >
               Add network
@@ -158,36 +195,49 @@ export default function SchainDetails(props) {
           </div>
           {(props.chainMeta && props.chainMeta.url) ? <div className='marg-left-10'>
             <a target="_blank" rel="noreferrer" href={props.chainMeta.url} className='undec'>
-              <Button size="small" variant="contained website-btn chain-btn" startIcon={<LanguageIcon />}>
-                Open
+              <Button
+                size="small"
+                variant="contained website-btn actions-btn"
+                startIcon={<LanguageIcon />}
+              >
+                Open dApp
               </Button>
             </a>
           </div> : null}
 
         </div>
-        
         <div className="marg-top-20 flex-container fl-centered-vert">
-          {/* <div className="flex-container fl-grow fl-centered-vert">
-            <h4 className='no-marg secondary-text'>
-              RPC Endpoints
-            </h4>
-          </div> */}
-          {/* <div className="flex-container fl-centered-vert">
-          <SecureSwitch checked={checked} setChecked={setChecked} />
-        </div> */}
         </div>
         <CopySurface url={checked ? rpcUrl : rpcHttpUrl} />
-        <CopySurface url={checked ? rpcWssUrl : rpcWsUrl} />
+        <Grid container spacing={2}>
+          <Grid item md={6} xs={12}>
+            <h4 className='no-marg-bott secondary-text'>
+              Websocket
+            </h4>
+            <CopySurface url={checked ? rpcWssUrl : rpcWsUrl} />
+          </Grid>
+          <Grid item md={6} xs={12}>
+            <h4 className='no-marg-bott secondary-text'>
+              Filestorage
+            </h4>
+            <CopySurface url={checked ? fsUrl : fsHttpUrl} />
+          </Grid>
+        </Grid>
 
-        <h4 className='no-marg-bott secondary-text'>
-          Filestorage Endpoint
-        </h4>
-        <CopySurface url={checked ? fsUrl : fsHttpUrl} />
-
-        <h4 className='no-marg-bott secondary-text'>
-          Chain ID
-        </h4>
-        <CopySurface url={schainHash} />
+        <Grid container spacing={2}>
+          <Grid item md={6} xs={12}>
+            <h4 className='no-marg-bott secondary-text'>
+              Chain ID
+            </h4>
+            <CopySurface url={chainId} />
+          </Grid>
+          <Grid item md={6} xs={12}>
+            <h4 className='no-marg-bott secondary-text'>
+              Chain name hash
+            </h4>
+            <CopySurface url={schainHash} />
+          </Grid>
+        </Grid>
       </div>
 
     </div>
