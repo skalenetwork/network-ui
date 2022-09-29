@@ -1,3 +1,8 @@
+
+body {
+  background-color: black;
+}
+
 .App {
   text-align: center;
 }
@@ -32,6 +37,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -44,34 +50,32 @@
   margin-bottom: 40px;
 }
 
-.AppWrap{
+.AppWrap {
   background-color: #000000;
   height: 100vh;
 }
 
-.card-header{
+.card-header {
   margin-bottom: 30pt !important;
   margin-top: 20pt !important;
   color: #ffffff;
 }
- 
-.app-bott{
 
-}
+.app-bott {}
 
-.marg-left-10{
+.marg-left-10 {
   margin-left: 10px;
 }
 
-.marg-left-20{
+.marg-left-20 {
   margin-left: 20px;
 }
 
-.marg-ri-20{
+.marg-ri-20 {
   margin-right: 20px;
 }
 
-.marg-ri-10{
+.marg-ri-10 {
   margin-right: 10px;
 }
 
@@ -104,30 +108,30 @@
 }
 
 
-.no-marg-top{
+.no-marg-top {
   margin-top: 0 !important;
 }
 
 
-.no-marg-bott{
+.no-marg-bott {
   margin-bottom: 0 !important;
 }
 
-.no-marg{
+.no-marg {
   margin: 0 !important;
 }
 
-.MuiAccordion-rounded:first-of-type{
+.MuiAccordion-rounded:first-of-type {
   border-top-left-radius: 20px !important;
-  border-top-right-radius:  20px !important;
+  border-top-right-radius: 20px !important;
 }
 
-.MuiAccordion-rounded:last-of-type{
+.MuiAccordion-rounded:last-of-type {
   border-bottom-left-radius: 20px !important;
-  border-bottom-right-radius:  20px !important;
+  border-bottom-right-radius: 20px !important;
 }
 
-.fullscreen-spin{
+.fullscreen-spin {
   width: 30px !important;
   height: 30px !important;
   color: #ffffff !important;
@@ -168,11 +172,11 @@
   justify-content: center;
 }
 
-.fl-centered-vert{
+.fl-centered-vert {
   align-items: center;
 }
 
-.fl-grow{
+.fl-grow {
   flex-grow: 1;
 }
 
@@ -186,18 +190,18 @@
   text-align: center;
 }
 
-.opacityIcon{
+.opacityIcon {
   opacity: 0.9;
   filter: saturate(90%) brightness(0.95);
 }
 
-.Mui-expanded{
+.Mui-expanded {
   border-radius: 20px !important;
 }
 
-.copyBoard{
+.copyBoard {
   margin: 10px 0 !important;
-  padding: 15pt !important;
+  padding: 13pt 15pt !important;
   background-color: #3a3a3a !important;
   border-radius: 20px !important;
   border: none !important;
@@ -211,31 +215,31 @@
   width: 13pt !important;
 }
 
-.undec{
+.undec {
   text-decoration: none !important;
 }
 
-.copyBoard:hover{
+.copyBoard:hover {
   background-color: #424242 !important;
 }
 
 
-.linkSurface{
+.linkSurface {
   background-color: #00b3ff75 !important;
   color: #d8efff !important;
   width: 100% !important;
   box-shadow: none !important;
 }
 
-.linkSurfaceIcon{
+.linkSurfaceIcon {
   color: #5298ca !important;
 }
 
-.linkSurface:hover{
+.linkSurface:hover {
   background-color: #00b3ff94 !important
 }
 
-.MuiFormControlLabel-root .MuiTypography-root{
+.MuiFormControlLabel-root .MuiTypography-root {
   font-weight: 500;
   font-size: 0.7rem;
 }
@@ -251,51 +255,57 @@
   background-color: rgb(255 144 41 / 70%) !important;
 }
 
-.MetamaskSurfaceIcon{
+.MetamaskSurfaceIcon {
   color: #e38e3e !important
 }
 
-.metamaskLogo{
+.metamaskLogo {
   width: 150px;
   margin: 0 100px;
 }
 
-.MuiButton-contained{
+.MuiButton-contained {
   border-radius: 20px !important;
 }
 
-.btnIcon{
+.btnIcon {
   width: 23px !important;
 }
 
-.skLink{
+.skLink {
   color: white !important;
 }
 
-.skBtn{
-  color: #ffffff !important;
+.skBtn {
+  /* color: #ffffff !important;
   opacity: 0.8 !important;
+  text-transform: none !important; */
+  font-weight: 500 !important;
   text-transform: none !important;
+  font-size: .9525rem !important;
+  line-height: 1.6 !important;
+  letter-spacing: .03857em !important;
+  color: rgba(255,255,255,.65) !important;
 }
 
-.text-secondary{
+.text-secondary {
   font-size: 0.9rem !important;
   color: #aaaaaa;
   font-weight: 500;
   margin: 5pt 0;
 }
 
-.MuiFormControlLabel-root span{
-  color: #d4d3d3; 
+.MuiFormControlLabel-root span {
+  color: #d4d3d3;
 }
 
-.sk-header{
+.sk-header {
   background-color: rgba(0, 0, 0, 0) !important;
   -webkit-backdrop-filter: blur(80px) !important;
   backdrop-filter: blur(80px) !important;
 }
 
-.appContent{
+.appContent {
   height: calc(100vh - 94px);
   overflow-y: auto;
 }
@@ -304,7 +314,7 @@
   display: none;
 }
 
-.logo{
+.logo {
   width: 90pt;
 }
 
@@ -319,13 +329,13 @@ code {
   overflow: auto;
 }
 
-.MuiSnackbarContent-root{
+.MuiSnackbarContent-root {
   border-radius: 20px !important;
   /* background-color: #3a3a3a !important;
   color: #0000008a !important; */
 }
 
-.MuiSnackbarContent-message{
+.MuiSnackbarContent-message {
   font-weight: 400;
 }
 
@@ -334,7 +344,7 @@ code {
   color: #0000008a !important;
 }
 
-.chainInfoText{
+.chainInfoText {
   color: #0000008a !important;
 }
 
@@ -353,17 +363,19 @@ code {
   padding: 5pt 0;
 }
 
-.app-bott h6, .app-bott svg{
+.app-bott h6,
+.app-bott svg {
   color: #000000cc !important;
 }
 
-.app-bott-dark h6, .app-bott-dark svg{
+.app-bott-dark h6,
+.app-bott-dark svg {
   color: #ffffffc9 !important;
 }
 
 
 
-.app-icon{
+.app-icon {
   width: 100%;
   height: 106px;
   border-top-left-radius: 25px !important;
@@ -379,24 +391,25 @@ code {
 }
 
 
-.schain-details-top{
+.schain-details-top {
   border-top-left-radius: 25px !important;
   border-top-right-radius: 25px !important;
 
   border-top: 1px #292929 solid !important;
   border-right: 1px #292929 solid !important;
   border-left: 1px #292929 solid !important;
+  border-bottom: 1px #292929 solid !important;
 
   padding: 20pt;
   height: 60pt;
 }
 
-.schain-details-top img{
+.schain-details-top img {
   max-height: 80%;
   max-width: 80%;
 }
 
-.schain-details-bott{
+.schain-details-bott {
   border-bottom-left-radius: 25px !important;
   border-bottom-right-radius: 25px !important;
 
@@ -407,7 +420,7 @@ code {
   padding: 20pt;
 }
 
-.schain-options .MuiChip-root svg{
+.schain-options .MuiChip-root svg {
   height: 15pt;
   width: 15pt;
   margin-left: 10px !important;
@@ -424,7 +437,7 @@ code {
 }
 
 
-.default-chain-icon{
+.default-chain-icon {
   width: 40pt !important;
   height: 40pt !important;
 }
@@ -435,7 +448,12 @@ code {
   color: white;
 }
 
-h1,h2,h3,h4,h5,h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   color: rgba(255, 255, 255, 0.9);
 }
 
@@ -449,7 +467,8 @@ li a {
 
 
 
-.chain-btn, .chain-btn svg{
+.chain-btn,
+.chain-btn svg {
   dcolor: white;
   color: black !important;
 }
@@ -465,9 +484,10 @@ li a {
 
 .website-btn {
   background-color: rgb(217, 224, 33) !important;
+  color: black !important;
 }
 
-.categories{
+.categories {
   margin-top: -40px;
 }
 
@@ -478,16 +498,19 @@ li a {
   transform: translate(0, 25px);
   z-index: 1;
 }
+
 .fade-enter.fade-enter-active {
   opacity: 1;
   transform: translate(0, 0);
 
   transition: opacity 250ms ease-out, transform 300ms ease;
 }
+
 .fade-exit {
   opacity: 1;
   transform: translate(0, 0);
 }
+
 .fade-exit.fade-exit-active {
   opacity: 0;
   transform: translate(0, 30px);
@@ -495,10 +518,61 @@ li a {
   transition: opacity 250ms ease-out, transform 300ms ease;
 }
 
-.MuiGrid-item {
+.dappCard.MuiGrid-item {
   transition: transform .2s;
 }
 
-.MuiGrid-item:hover {
+.dappCard.MuiGrid-item:hover {
   transform: scale(1.1);
+}
+
+.topBannerNew {
+  background-color: #292929 !important;
+  border-radius: 50px !important;
+  padding: 1px 12px;
+
+  font-weight: 500 !important;
+  /* text-transform: uppercase !important; */
+  font-size: .8525rem !important;
+  line-height: 1.5 !important;
+  letter-spacing: .02857em !important;
+  color: #e1e1e1 !important;
+  background-image: none !important;
+
+}
+
+.categoryCountChip {
+  font-weight: 500 !important;
+  font-size: 0.7125rem !important;
+  padding: 2px 2px !important;
+  color: #e1e1e1 !important;
+}
+
+.topBannerNew button {
+  font-size: 0.8125rem !important;
+  line-height: 1.5 !important;
+}
+
+
+.topBannerNew .MuiButton-endIcon {
+  margin-left: 4px !important;
+}
+
+.topBannerNew .MuiButton-endIcon svg {
+  width: 11px !important;
+}
+
+.actions-btn{
+  font-size: 0.805rem !important;
+  line-height: 1.75 !important;
+}
+
+.actions-btn svg {
+  width: 15px !important;
+}
+
+.dAppDesc {
+  color: rgba(255,255,255,.65) !important;
+  font-weight: 400 !important;
+  font-size: 0.95rem !important;
 }

@@ -64,32 +64,31 @@ export default function CopySurface(props) {
 
   return (
     <div>
-        <CopyToClipboard text={props.url}
-            onCopy={handleClick}>
-            <Tooltip title="Click to copy to clipboard">
-              <ButtonBase className='copyBoard flex-container'>
-            
-                    <div className="overflow-auto flex-container fl-centered-vert fl-grow">
-                    <code>
-                        {props.url}
-                    </code>
-                    </div>
-                    <div className="flex-container">
-                    <ContentCopyIcon className='copy-icon'/>
-                    </div>
-                
-                </ButtonBase>
-            </Tooltip>
-        </CopyToClipboard>
-        <Snackbar
-            open={copy}
-            autoHideDuration={6000}
-            onClose={handleClose}
-            message='URL copied to clipboard'
-            action={action}
-            severity="success"
-        />
+      <CopyToClipboard text={props.url}
+        onCopy={handleClick}>
+        <Tooltip title="Click to copy to clipboard">
+          <ButtonBase className='copyBoard flex-container'>
+
+            <div className="overflow-auto flex-container fl-centered-vert fl-grow">
+              <code>
+                {props.url}
+              </code>
+            </div>
+            <div className="flex-container">
+              <ContentCopyIcon className='copy-icon marg-left-10' />
+            </div>
+          </ButtonBase>
+        </Tooltip>
+      </CopyToClipboard>
+      <Snackbar
+        open={copy}
+        autoHideDuration={6000}
+        onClose={handleClose}
+        message='URL copied to clipboard'
+        action={action}
+        severity="success"
+      />
     </div>
-    
+
   );
 }

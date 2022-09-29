@@ -27,3 +27,6 @@ manager.json
 package-lock.json
 
 src/meta/*
+
+metaportConfig*.json
+chainsJson.json

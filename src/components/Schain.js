@@ -25,6 +25,7 @@ import React from 'react';
 
 import { useParams } from "react-router-dom";
 
+import Grid from '@mui/material/Grid';
 import Breadcrumbs from '@mui/material/Breadcrumbs';
 import Typography from '@mui/material/Typography';
 import { Link } from "react-router-dom";
@@ -48,17 +49,21 @@ export default function Schain(props) {
 
   return (
     <div>
-      <div className="marg-bott-20">
-        <div className="flex-container fl-centered">
-          <Breadcrumbs aria-label="breadcrumb" className="fl-grow">
-            <Link className='undec' to="/">
-              <ArrowBackIosIcon style={{ 'height': '12px', 'width': '15px' }} />
-              SKALE Chains
-            </Link>
-            <Typography color="text.primary">{name}</Typography>
-          </Breadcrumbs>
-          {chain ? <SChainOptions chainMeta={props.chainsMeta[name]} schain={chain} /> : null}
-        </div>
+      <div className="marg-bott-20 fl-centered">
+        <Grid container spacing={2} className="flex-container fl-centered marg-bott-20">
+          <Grid item md={6} xs={12}>
+            <Breadcrumbs aria-label="breadcrumb" className="fl-grow">
+              <Link className='undec' to="/">
+                <ArrowBackIosIcon style={{ 'height': '12px', 'width': '15px' }} />
+                SKALE Chains
+              </Link>
+              <Typography color="text.primary">{name}</Typography>
+            </Breadcrumbs>
+          </Grid>
+          <Grid item md={6} xs={12}>
+            {chain ? <SChainOptions chainMeta={props.chainsMeta[name]} schain={chain} /> : null}
+          </Grid>
+        </Grid>
       </div>
       <SchainDetails
         schainName={name}

@@ -85,12 +85,23 @@ export default function Schains(props) {
     <div className="marg-bott-40">
       <TransitionGroup component={null}>
         <CSSTransition key={location.key} classNames="fade" timeout={300}>
-        <Routes>
-          <Route index element={<Categories icons={ICONS} schains={schains} chainsMeta={CHAINS_META} />} />
-          <Route path="chains" >
-            <Route path=":name" element={<Schain icons={ICONS} schains={schains} chainsMeta={CHAINS_META} />} />
-          </Route>
-        </Routes>
+          <Routes>
+            <Route
+              index
+              element={<Categories
+                icons={ICONS}
+                schains={schains}
+                chainsMeta={CHAINS_META}
+                metaport={props.metaport}
+              />}
+            />
+            <Route path="chains" >
+              <Route
+                path=":name"
+                element={<Schain icons={ICONS} schains={schains} chainsMeta={CHAINS_META} />}
+              />
+            </Route>
+          </Routes>
         </CSSTransition>
       </TransitionGroup>
     </div>

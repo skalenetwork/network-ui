@@ -19,7 +19,8 @@
     "react-scripts": "4.0.3",
     "react-transition-group": "^4.4.2",
     "tinycolor2": "^1.4.2",
-    "web-vitals": "^1.0.1"
+    "web-vitals": "^1.0.1",
+    "@skalenetwork/metaport": "0.1.1-develop.1"
   },
   "scripts": {
     "start": "react-scripts start",
