@@ -41,7 +41,7 @@ import metaportConfig from './metaportConfig.json'
 let theme = createTheme({
   palette: {
     mode: 'dark'
-  },
+  }
 });
 
 const metaport = new Metaport(metaportConfig);

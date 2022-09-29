@@ -127,9 +127,9 @@ export default function SchainDetails(props) {
       iconPath = gifPath;
     }
     if (iconPath) {
-      return <img alt='logo' src={props.icons[iconPath].default}/>
+      return <img alt='logo' src={props.icons[iconPath].default} />
     }
-    return <OfflineBoltIcon className='default-chain-icon'/>;
+    return <OfflineBoltIcon className='default-chain-icon' />;
   }
 
   async function addNetwork() {
@@ -184,9 +184,10 @@ export default function SchainDetails(props) {
               <Button
                 size="small"
                 variant="contained website-btn actions-btn"
+                style={{ 'textTransform': 'none' }}
                 startIcon={<AccountBalanceWalletIcon />}
               >
-                Faucet
+                GET sFUEL
               </Button>
             </a>
           ) : null}
