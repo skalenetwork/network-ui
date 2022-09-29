@@ -32,6 +32,7 @@ import Categories from './Categories';
 import Schain from './Schain';
 
 import { CHAINS_META, ICONS } from '../constants';
+// import chainsJson from './chainsJson';
 
 
 export default function Schains(props) {
