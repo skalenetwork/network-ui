@@ -59,8 +59,15 @@ function getBgColor(schainName) {
 export default function ChainCard(props) {
 
   function getIcon(schainName) {
-    let iconPath = schainName + '.png';
-    if (props.icons[iconPath]) {
+    let iconPath;
+    let pngPath = schainName + '.png';
+    let gifPath = schainName + '.gif';
+    if (props.icons[pngPath]) {
+      iconPath = pngPath;
+    } else if (props.icons[gifPath]) {
+      iconPath = gifPath;
+    }
+    if (iconPath) {
       return <img alt='logo' src={props.icons[iconPath].default}/>
     }
     return <OfflineBoltIcon className='default-chain-icon'/>;

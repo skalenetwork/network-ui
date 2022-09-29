@@ -117,12 +117,19 @@ export default function SchainDetails(props) {
   }
 
 
-  function getIcon(schainName) {
-    let iconPath = schainName + '.png';
-    if (props.icons[iconPath]) {
-      return <img alt='logo' src={props.icons[iconPath].default} />
+  function getIcon(schainName) { // TODO: move to the separate module
+    let iconPath;
+    let pngPath = schainName + '.png';
+    let gifPath = schainName + '.gif';
+    if (props.icons[pngPath]) {
+      iconPath = pngPath;
+    } else if (props.icons[gifPath]) {
+      iconPath = gifPath;
     }
-    return <OfflineBoltIcon className='default-chain-icon' />;
+    if (iconPath) {
+      return <img alt='logo' src={props.icons[iconPath].default}/>
+    }
+    return <OfflineBoltIcon className='default-chain-icon'/>;
   }
 
   async function addNetwork() {
