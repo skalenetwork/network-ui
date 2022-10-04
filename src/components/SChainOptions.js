@@ -57,7 +57,7 @@ export default function SChainOptions(props) {
   return (
     <Stack justifyContent="flex-end" direction="row" spacing={1} className="schain-options">
       <Chip label='Gen' icon={v1(props.schain) ? <LooksOneIcon /> : <LooksTwoIcon />} />
-      {multiMode(props.schain) ? <Chip label='Mutitransaction' icon={<BlurOnIcon />} /> : null}
+      {multiMode(props.schain) ? <Chip label='Multitransaction' icon={<BlurOnIcon />} /> : null}
       <Chip label={'' + timestampToDate(props.schain[5])} icon={<AccessTimeFilledIcon />} />
       <Chip label={'' + getCategory(props.schain[0])} icon={<CategoryIcon />} />
     </Stack>
