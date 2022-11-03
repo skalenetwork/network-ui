@@ -33,7 +33,7 @@ import CategorySection from './CategorySection';
 export default function Categories(props) {
   return (
     <div className='categories'>
-      <div className='marg-top-40'>
+      {props.metaport ? (<div className='marg-top-40'>
         <Paper elevation={3} className='topBannerNew flex-container fl-centered-vert'>
           <Chip label="LIVE" color="success" variant="outlined" className='marg-ri-20' />
           <p className='fl-grow'>Transfer assets between Ethereum Mainnet and SKALE Europa Chain</p>
@@ -41,7 +41,7 @@ export default function Categories(props) {
             Open Metaport
           </Button>
         </Paper>
-      </div>
+      </div>) : null}
       <CategorySection
         icons={props.icons}
         category='Applications'

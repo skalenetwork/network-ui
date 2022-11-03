@@ -44,7 +44,8 @@ let theme = createTheme({
   }
 });
 
-const metaport = new Metaport(metaportConfig);
+
+const metaport = metaportConfig.skaleNetwork ? new Metaport(metaportConfig) : null;
 
 
 function App() {
