@@ -2696,10 +2696,10 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@skalenetwork/metaport@0.1.1-develop.1":
-  version "0.1.1-develop.1"
-  resolved "https://registry.yarnpkg.com/@skalenetwork/metaport/-/metaport-0.1.1-develop.1.tgz#f14913ba50f436cc26f174c721fcad88fb5f3d6f"
-  integrity sha512-0e0znFQM8JfDHNQrWchc8i3D/tmWrCVuec7SCMZwMmItGW/DnixQaGssfHBSNoKraoLOScClzVPD/fUFnu6ZzQ==
+"@skalenetwork/metaport@1.0.0-develop.9":
+  version "1.0.0-develop.9"
+  resolved "https://registry.yarnpkg.com/@skalenetwork/metaport/-/metaport-1.0.0-develop.9.tgz#0cc959d5f74b0907f0b20a23350f02766e17eacd"
+  integrity sha512-rD8Bjx7Ne+NQIdKW4L1KUAhnQ6wXYyb0lLH0k+9+cSn2F3AXpAXJFqE4OJWZPUTmKzSqcICIe84BJ+RrUPMMwQ==
 
 "@skalenetwork/skale.js-test@^0.0.1":
   version "0.0.1"

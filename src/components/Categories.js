@@ -28,17 +28,17 @@ import Chip from '@mui/material/Chip';
 import Button from '@mui/material/Button';
 
 import CategorySection from './CategorySection';
-
+import BoltIcon from '@mui/icons-material/Bolt';
 
 export default function Categories(props) {
   return (
     <div className='categories'>
       {props.metaport ? (<div className='marg-top-40'>
         <Paper elevation={3} className='topBannerNew flex-container fl-centered-vert'>
-          <Chip label="LIVE" color="success" variant="outlined" className='marg-ri-20' />
-          <p className='fl-grow'>Transfer assets between Ethereum Mainnet and SKALE Europa Chain</p>
-          <Button size="small" variant="contained website-btn chain-btn" onClick={props.metaport.open}>
-            Open Metaport
+          <Chip label="METAPORT IS LIVE" color="success" variant="outlined" className='marg-ri-20' />
+          <p className='fl-grow'>Bridge tokens between SKALE Chains and Ethereum Mainnet</p>
+          <Button startIcon={<BoltIcon/>} size="small" variant="contained website-btn chain-btn" onClick={props.metaport.open}>
+            Try now
           </Button>
         </Paper>
       </div>) : null}
