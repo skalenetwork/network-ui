@@ -35,6 +35,7 @@ import { CHAINS_META, ICONS } from '../constants';
 // import chainsJson from './chainsJson';
 
 
+
 export default function Schains(props) {
   const [loading, setLoading] = React.useState(true);
   const [intervalId, setIntervalId] = React.useState();
