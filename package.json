@@ -20,7 +20,7 @@
     "react-transition-group": "^4.4.2",
     "tinycolor2": "^1.4.2",
     "web-vitals": "^1.0.1",
-    "@skalenetwork/metaport": "1.0.0-develop.9"
+    "@skalenetwork/metaport": "1.1.0-beta.1"
   },
   "scripts": {
     "start": "react-scripts --max_old_space_size=2024 start",
