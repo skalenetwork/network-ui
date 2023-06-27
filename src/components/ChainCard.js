@@ -49,12 +49,15 @@ function getChainName(schainName) {
 }
 
 function getBgColor(schainName) {
+  // todo: refactor
   if (CHAINS_META[schainName]) {
+    if (CHAINS_META[schainName]['gradientBackground']) {
+      return CHAINS_META[schainName]['gradientBackground'];
+    }
     return CHAINS_META[schainName]['background'];
   }
   return stringToColour(schainName);
 }
-
 
 export default function ChainCard(props) {
 
@@ -79,12 +82,12 @@ export default function ChainCard(props) {
         <Link to={'chains/' + props.schain[0]}>
           <Button
             className='app-icon'
-            style={{ backgroundColor: getBgColor(props.schain[0]) }}
+            style={{ background: getBgColor(props.schain[0]) }}
           >
             {getIcon(props.schain[0])}
           </Button>
         </Link>
-        <div className='flex-container fl-centered app-bott' style={{ backgroundColor: getBgColor(props.schain[0]) }}>
+        <div className='flex-container fl-centered app-bott' style={{ background: getBgColor(props.schain[0]) }}>
         <div className={'app-bott-ins flex-container fl-centered ' + (tinycolor(getBgColor(props.schain[0])).isLight() ? '' : 'app-bott-dark')}>
             <Tooltip title="SKALE chain creation date">
               <h6 className="no-marg fl-centered flex-container chainInfoText">

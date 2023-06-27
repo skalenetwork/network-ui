@@ -33,15 +33,6 @@ import BoltIcon from '@mui/icons-material/Bolt';
 export default function Categories(props) {
   return (
     <div className='categories'>
-      {props.metaport ? (<div className='marg-top-40'>
-        <Paper elevation={3} className='topBannerNew flex-container fl-centered-vert'>
-          <Chip label="METAPORT IS LIVE" color="success" variant="outlined" className='marg-ri-20' />
-          <p className='fl-grow'>Bridge tokens between SKALE Chains and Ethereum Mainnet</p>
-          <Button startIcon={<BoltIcon/>} size="small" variant="contained website-btn chain-btn" onClick={props.metaport.open}>
-            Try now
-          </Button>
-        </Paper>
-      </div>) : null}
       <CategorySection
         icons={props.icons}
         category='Applications'
