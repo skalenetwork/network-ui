@@ -51,10 +51,7 @@ function getChainName(schainName) {
 function getBgColor(schainName) {
   // todo: refactor
   if (CHAINS_META[schainName]) {
-    if (CHAINS_META[schainName]['gradientBackground']) {
-      return CHAINS_META[schainName]['gradientBackground'];
-    }
-    return CHAINS_META[schainName]['background'];
+    return CHAINS_META[schainName]['gradientBackground'] ?? CHAINS_META[schainName]['background'];
   }
   return stringToColour(schainName);
 }
