@@ -94,7 +94,6 @@ export default function Schains(props) {
                 icons={ICONS}
                 schains={schains}
                 chainsMeta={CHAINS_META}
-                metaport={props.metaport}
               />}
             />
             <Route path="chains" >
