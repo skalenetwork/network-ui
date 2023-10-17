@@ -29,3 +29,10 @@ export const ICONS = importAll(require.context('./meta/logos', false, /\.(png|jp
 
 export const CHAIN_ID = process.env["REACT_APP_CHAIN_ID"];
 export const NETWORK_NAME = process.env["REACT_APP_NETWORK_NAME"];
+
+
+export const PORTAL_URLS = {
+    mainnet: 'https://portal.skale.space/',
+    staging: 'https://testnet.portal.skale.space/',
+    legacy: 'https://bridge-ui-git-qa-skale-network.vercel.app/'
+}
