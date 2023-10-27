@@ -32,9 +32,9 @@ export const NETWORK_NAME = process.env["REACT_APP_NETWORK_NAME"];
 
 
 export const PORTAL_URLS = {
-    mainnet: 'https://portal.skale.space/',
-    staging: 'https://testnet.portal.skale.space/',
-    legacy: 'https://bridge-ui-git-qa-skale-network.vercel.app/'
+    mainnet: 'https://portal.skale.space/chains',
+    staging: 'https://testnet.portal.skale.space/chains',
+    legacy: 'https://qa.portal.skalenodes.com/chains'
 }
 
 const MS_MULTIPLIER = 1000
