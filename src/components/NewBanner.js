@@ -21,7 +21,7 @@
  * @copyright SKALE Labs 2023-Present
 */
 
-import * as React from 'react';
+import { useState } from 'react';
 
 import Modal from '@mui/material/Modal';
 import Container from '@mui/material/Container';
@@ -39,7 +39,7 @@ import GridViewRoundedIcon from '@mui/icons-material/GridViewRounded';
 
 import portalImg from '../portal.png';
 
-import { PORTAL_URLS, NETWORK_NAME } from '../constants'
+import { PORTAL_URLS, PORTAL_LAUNCH_TS, NETWORK_NAME } from '../constants'
 
 const style = {
   width: "100vw",
@@ -51,7 +51,11 @@ const style = {
 
 export default function NewBanner(props) {
   const portalUrl = PORTAL_URLS[NETWORK_NAME];
-  if (!props.bannerOpen || !portalUrl) return null;
+  const launchTs = PORTAL_LAUNCH_TS[NETWORK_NAME];
+
+  const [currentTimestamp, _] = useState(Date.now());
+
+  if (!props.bannerOpen || !portalUrl || currentTimestamp < launchTs) return null;
   return (
     <Modal open={props.bannerOpen} style={style} className="br__modal flex-container fl-centered">
       <Container maxWidth="lg" className='' >
@@ -128,8 +132,8 @@ export default function NewBanner(props) {
                   </Button>
                 </div>
 
-                <p className='textGray'>SKALE Network UI you're currently using is deprecated and 
-                will no longer be updated. Please, consider switching to the new SKALE Portal.</p>
+                <p className='textGray'>SKALE Network UI you're currently using is deprecated and
+                  will no longer be updated. Please, consider switching to the new SKALE Portal.</p>
               </div>
             </Grid>
           </Grid>

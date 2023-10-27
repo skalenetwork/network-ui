@@ -36,3 +36,11 @@ export const PORTAL_URLS = {
     staging: 'https://testnet.portal.skale.space/',
     legacy: 'https://bridge-ui-git-qa-skale-network.vercel.app/'
 }
+
+const MS_MULTIPLIER = 1000
+
+export const PORTAL_LAUNCH_TS = {
+    mainnet: 1699297200 * MS_MULTIPLIER,
+    staging: 1698865200 * MS_MULTIPLIER,
+    legacy: 1698433200 * MS_MULTIPLIER
+}
