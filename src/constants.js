@@ -29,3 +29,18 @@ export const ICONS = importAll(require.context('./meta/logos', false, /\.(png|jp
 
 export const CHAIN_ID = process.env["REACT_APP_CHAIN_ID"];
 export const NETWORK_NAME = process.env["REACT_APP_NETWORK_NAME"];
+
+
+export const PORTAL_URLS = {
+    mainnet: 'https://portal.skale.space/chains',
+    staging: 'https://testnet.portal.skale.space/chains',
+    legacy: 'https://qa.portal.skalenodes.com/chains'
+}
+
+const MS_MULTIPLIER = 1000
+
+export const PORTAL_LAUNCH_TS = {
+    mainnet: 1699297200 * MS_MULTIPLIER,
+    staging: 1698865200 * MS_MULTIPLIER,
+    legacy: 1698433200 * MS_MULTIPLIER
+}

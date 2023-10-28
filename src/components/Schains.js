@@ -30,16 +30,17 @@ import CircularProgress from '@mui/material/CircularProgress';
 
 import Categories from './Categories';
 import Schain from './Schain';
+import NewBanner from './NewBanner';
 
 import { CHAINS_META, ICONS } from '../constants';
 // import chainsJson from './chainsJson';
-
 
 
 export default function Schains(props) {
   const [loading, setLoading] = React.useState(true);
   const [intervalId, setIntervalId] = React.useState();
   const [schains, setSchains] = React.useState();
+  const [bannerOpen, setBannerOpen] = React.useState(true);
 
   const location = useLocation();
 
@@ -84,27 +85,30 @@ export default function Schains(props) {
     );
   };
   return (
-    <div className="marg-bott-40">
-      <TransitionGroup component={null}>
-        <CSSTransition key={location.key} classNames="fade" timeout={300}>
-          <Routes>
-            <Route
-              index
-              element={<Categories
-                icons={ICONS}
-                schains={schains}
-                chainsMeta={CHAINS_META}
-              />}
-            />
-            <Route path="chains" >
+    <div>
+      <NewBanner bannerOpen={bannerOpen} setBannerOpen={setBannerOpen} />
+      <div className="marg-bott-40">
+        <TransitionGroup component={null}>
+          <CSSTransition key={location.key} classNames="fade" timeout={300}>
+            <Routes>
               <Route
-                path=":name"
-                element={<Schain icons={ICONS} schains={schains} chainsMeta={CHAINS_META} />}
+                index
+                element={<Categories
+                  icons={ICONS}
+                  schains={schains}
+                  chainsMeta={CHAINS_META}
+                />}
               />
-            </Route>
-          </Routes>
-        </CSSTransition>
-      </TransitionGroup>
+              <Route path="chains" >
+                <Route
+                  path=":name"
+                  element={<Schain icons={ICONS} schains={schains} chainsMeta={CHAINS_META} />}
+                />
+              </Route>
+            </Routes>
+          </CSSTransition>
+        </TransitionGroup>
+      </div>
     </div>
   )
 }
